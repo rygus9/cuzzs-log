@@ -4,10 +4,10 @@ import cls from "src/utils/cls";
 interface PostHeaderProps {
   title: string;
   tags: string[];
-  lastModified: string;
+  uploadDate: string;
 }
 
-const PostHeader = ({ title, tags, lastModified }: PostHeaderProps) => {
+const PostHeader = ({ title, tags, uploadDate }: PostHeaderProps) => {
   return (
     <>
       <h2 className="text-5xl text-white font-bold mt-20">{title}</h2>
@@ -25,7 +25,7 @@ const PostHeader = ({ title, tags, lastModified }: PostHeaderProps) => {
           </figure>
           <div>
             <div className="text-2xl font-bold text-myOrange">Cuzz</div>
-            <span className="text-base text-stone-100 font-thin">{lastModified}</span>
+            <span className="text-base text-stone-100 font-thin">{uploadDate}</span>
           </div>
           <div className="pl-10">
             {tags.map((elem) => (

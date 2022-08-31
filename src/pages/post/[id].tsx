@@ -8,7 +8,7 @@ import PostBody from "src/components/Post/PostBody";
 interface PostProps {
   fileInfo: {
     title: string;
-    lastModified: string;
+    uploadDate: string;
     tags: string[];
   };
   fileContents: string;

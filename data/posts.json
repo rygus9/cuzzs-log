@@ -1,1 +1,21 @@
-[{"fileInfo":{"title":"학교 프로젝트 정리","tags":["retrospective"],"uploadDate":"2022년 8월 31일"},"fileContents":"...","path":"posts/학교플젝.md"},{"fileInfo":{"title":"2달 인턴 생활 정리","tags":["retrospective"],"uploadDate":"2022년 8월 30일"},"fileContents":"...","path":"posts/회사플젝.md"},{"fileInfo":{"title":"안녕하세요 신입 프론트엔드 개발자 구교현입니다.","tags":["retrospective"],"uploadDate":"2022년 8월 29일"},"fileContents":"프론트엔드 개발자를 지망하는 학생으로 아름답고 직관적인 UI를 깔끔한 코드로 구현하는 걸 좋아합니다. 또한 개발을 편리하게 해주는 여러 도구를 찾아내고 이를 활용하는 걸 즐깁니...","path":"posts/이력서.md"}]
+[
+  {
+    "fileInfo": { "title": "학교 프로젝트 정리", "tags": ["retrospective"], "uploadDate": "2022년 8월 31일" },
+    "fileContents": "...",
+    "path": "posts/학교플젝.md"
+  },
+  {
+    "fileInfo": { "title": "2달 인턴 생활 정리", "tags": ["retrospective"], "uploadDate": "2022년 8월 30일" },
+    "fileContents": "...",
+    "path": "posts/회사플젝.md"
+  },
+  {
+    "fileInfo": {
+      "title": "안녕하세요 신입 프론트엔드 개발자 구교현입니다.",
+      "tags": ["retrospective"],
+      "uploadDate": "2022년 8월 29일"
+    },
+    "fileContents": "프론트엔드 개발자를 지망하는 학생으로 아름답고 직관적인 UI를 깔끔한 코드로 구현하는 걸 좋아합니다. 또한 개발을 편리하게 해주는 여러 도구를 찾아내고 이를 활용하는 걸 즐깁니...",
+    "path": "posts/이력서.md"
+  }
+]
