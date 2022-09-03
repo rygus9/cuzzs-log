@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   content: ["./src/pages/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}", "./src/layout/**/*.{ts,tsx}"],
   theme: {
@@ -8,6 +10,13 @@ module.exports = {
         myWhite: "#dedede",
         myGray: "#2f2f2f",
       },
+      typography: (theme) => ({
+        "--tw-prose-links": colors.myOrange,
+        "--tw-prose-invert-links": colors.myOrange,
+        DEFAULT: {
+          css: {},
+        },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],

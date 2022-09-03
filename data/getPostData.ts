@@ -1,23 +1,13 @@
 import fs from "fs";
+import matter from "gray-matter";
 
 const getPostData = (path: string, summary: boolean = false) => {
   const fileTexts = fs.readFileSync(path, "utf8");
-  const fileTitle = fileTexts.split("---")[1];
-  const fileInfo = fileTitle
-    .split("\n")
-    .filter((elem) => elem)
-    .map((elem) => ({
-      [elem.split(":")[0]]:
-        elem.split(":")[0] === "tags" ? JSON.parse(elem.split(":")[1].trim()) : elem.split(":")[1].trim(),
-    }))
-    .reduce((curr, now) => {
-      return Object.assign(curr, now);
-    }, {});
-  const fileContents = fileTexts.split("---")[2];
+  const { data: postInfo, content: postContent } = matter(fileTexts);
 
   const returnObject = summary
-    ? { fileInfo, fileContents: fileContents.substring(0, 100).replaceAll("\n", "") + "..." }
-    : { fileInfo, fileContents };
+    ? { postInfo, postContent: postContent.substring(0, 100).replaceAll("\n", "") + "..." }
+    : { postInfo, postContent };
 
   return returnObject;
 };

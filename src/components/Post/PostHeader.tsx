@@ -10,7 +10,7 @@ interface PostHeaderProps {
 const PostHeader = ({ title, tags, uploadDate }: PostHeaderProps) => {
   return (
     <>
-      <h2 className="text-5xl text-white font-bold mt-20">{title}</h2>
+      <h2 className="text-4xl text-white font-bold mt-20">{title}</h2>
       <div className="mt-10 mb-2 w-full">
         <div className="flex items-center space-x-6">
           <figure className="w-16 h-16 rounded-full">

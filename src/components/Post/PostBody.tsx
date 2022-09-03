@@ -11,7 +11,7 @@ function LinkRenderer(props: any) {
 
 const PostBody = ({ children }: { children: string }) => {
   return (
-    <section className={cls("prose prose-base prose-amber prose-invert m-auto max-w-none", "md:prose-lg")}>
+    <section className={cls("prose prose-base prose-invert m-auto max-w-none", "md:prose-lg")}>
       <ReactMarkdown components={{ a: LinkRenderer }} className="w-full">
         {children}
       </ReactMarkdown>

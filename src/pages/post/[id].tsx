@@ -6,21 +6,21 @@ import getPostData from "data/getPostData";
 import PostBody from "src/components/Post/PostBody";
 
 interface PostProps {
-  fileInfo: {
+  postInfo: {
     title: string;
     uploadDate: string;
     tags: string[];
   };
-  fileContents: string;
+  postContent: string;
 }
 
-const Post = ({ fileInfo, fileContents }: PostProps) => {
+const Post = ({ postInfo, postContent }: PostProps) => {
   return (
     <>
       <header className="mb-20">
-        <PostHeader {...fileInfo} />
+        <PostHeader {...postInfo} />
       </header>
-      <PostBody>{fileContents}</PostBody>
+      <PostBody>{postContent}</PostBody>
     </>
   );
 };
@@ -39,10 +39,10 @@ export async function getStaticProps({ params }: { params: any }) {
   const posts: PostElemType[] = JSON.parse(fs.readFileSync("data/posts.json").toString());
   const filePath = posts[posts.length - 1 - params.id].path;
 
-  const { fileInfo, fileContents } = getPostData(filePath, false);
+  const { postInfo, postContent } = getPostData(filePath, false);
 
   return {
-    props: { fileInfo, fileContents },
+    props: { postInfo, postContent },
   };
 }
 
