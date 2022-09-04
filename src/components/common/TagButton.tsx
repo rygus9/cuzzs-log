@@ -4,14 +4,15 @@ import cls from "src/utils/cls";
 interface TagButonProps {
   size?: "sm" | "base";
   type?: "string" | "button";
+  link?: string;
   children: string;
 }
 
-const TagButton = ({ children, type = "button" }: TagButonProps) => {
+const TagButton = ({ children, link, type = "button" }: TagButonProps) => {
   return (
     <>
       {type === "button" && (
-        <Link href={`/tag/${children.toLowerCase()}`}>
+        <Link href={link ? link : `/tag/${children.toLowerCase()}`}>
           <a
             className={cls(
               "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",

@@ -20,11 +20,24 @@ const Tags = ({ tags }: TagsProps) => {
               ></ChevronUpIcon>
             </Disclosure.Button>
             <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md", "sm:px-4 sm:py-6")}>
-              {tags.map((tag: string) => (
-                <span key={tag} className="mr-2 mt-2">
-                  <TagButton>{tag}</TagButton>
-                </span>
-              ))}
+              {tags.map((tag: string) => {
+                const tagSplits = tag.split(" ");
+                return (
+                  <span key={tag} className="mr-2 mt-2">
+                    <TagButton
+                      link={
+                        "/tag/" +
+                        tagSplits
+                          .splice(0, tagSplits.length - 1)
+                          .join(" ")
+                          .toLowerCase()
+                      }
+                    >
+                      {tag}
+                    </TagButton>
+                  </span>
+                );
+              })}
             </Disclosure.Panel>
           </>
         )}
