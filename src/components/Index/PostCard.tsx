@@ -5,7 +5,14 @@ import cls from "src/utils/cls";
 const PostCard = ({ fileInfo, fileContents, path }: Omit<PostElemType, "path"> & { path: number }) => (
   <article className="h-40 pt-4">
     <Link href={"/post/" + path}>
-      <h2 className="text-2xl text-myWhite font-semibold cursor-pointer">{fileInfo.title}</h2>
+      <h2
+        className={cls(
+          "text-2xl text-myWhite font-semibold cursor-pointer",
+          " before:content-['#'] before:pr-1 before:text-myOrange"
+        )}
+      >
+        {fileInfo.title}
+      </h2>
     </Link>
     <div className="flex items-center justify-start space-x-6 mt-2">
       <span className="text-base text-stone-400">{fileInfo.uploadDate}</span>

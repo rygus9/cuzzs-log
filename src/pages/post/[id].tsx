@@ -17,7 +17,7 @@ interface PostProps {
 const Post = ({ postInfo, postContent }: PostProps) => {
   return (
     <>
-      <header className="mb-20">
+      <header>
         <PostHeader {...postInfo} />
       </header>
       <PostBody>{postContent}</PostBody>
