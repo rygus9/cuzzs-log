@@ -2,6 +2,7 @@
 title: React.Fragment 배우기
 tags: ["react"]
 uploadDate: 2022년 9월 04일
+description: 별코딩 유튜브에서 다룬 Fragment 내용을 보고 정리한 내용입니다.
 ---
 
 https://www.youtube.com/watch?v=XuF6Qem0cTE&t=328s

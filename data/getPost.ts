@@ -5,9 +5,7 @@ const getPost = (path: string, summary: boolean = false) => {
   const fileTexts = fs.readFileSync(path, "utf8");
   const { data: postInfo, content: postContent } = matter(fileTexts);
 
-  const returnObject = summary
-    ? { postInfo, postContent: postContent.substring(0, 80).replaceAll("\n", "") + "..." }
-    : { postInfo, postContent };
+  const returnObject = summary ? { postInfo } : { postInfo, postContent };
 
   return returnObject;
 };
