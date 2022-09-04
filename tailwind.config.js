@@ -21,8 +21,8 @@ module.exports = {
             "--tw-prose-invert-headings": colors.myWhite,
             "--tw-prose-lead": colors.myWhite,
             "--tw-prose-invert-lead": colors.myWhite,
-            "--tw-prose-bold": colors.myOrange,
-            "--tw-prose-invert-bold": colors.myOrange,
+            "--tw-prose-bold": colors.myWhite,
+            "--tw-prose-invert-bold": colors.myWhite,
             "--tw-prose-counters": colors.myOrange,
             "--tw-prose-invert-counters": colors.myOrange,
             "--tw-prose-bullets": colors.myOrange,
@@ -61,8 +61,16 @@ module.exports = {
               color: colors.myOrange,
             },
 
-            bold: {
+            strong: {
               fontWeight: "bold",
+            },
+
+            "strong::before": {
+              content: "open-quote",
+            },
+
+            "strong::after": {
+              content: "close-quote",
             },
 
             "a:hover": {
@@ -117,6 +125,11 @@ module.exports = {
             h6: {
               fontSize: "1.15rem",
               lineHeight: "1.44rem",
+            },
+
+            li: {
+              marginTop: "0.4rem",
+              marginBottom: "0.4rem",
             },
           },
         },
