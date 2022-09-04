@@ -2,7 +2,7 @@ import { PostElemType } from "data/PostsElemType";
 import Link from "next/link";
 import cls from "src/utils/cls";
 
-const PostCard = ({ fileInfo, fileContents, path }: Omit<PostElemType, "path"> & { path: number }) => (
+const PostCard = ({ postInfo, postContent, path }: Omit<PostElemType, "path"> & { path: number }) => (
   <article className="h-40 pt-4">
     <Link href={"/post/" + path}>
       <h2
@@ -11,13 +11,13 @@ const PostCard = ({ fileInfo, fileContents, path }: Omit<PostElemType, "path"> &
           " before:content-['#'] before:pr-1 before:text-myOrange"
         )}
       >
-        {fileInfo.title}
+        {postInfo.title}
       </h2>
     </Link>
     <div className="flex items-center justify-start space-x-6 mt-2">
-      <span className="text-base text-stone-400">{fileInfo.uploadDate}</span>
+      <span className="text-base text-stone-400">{postInfo.uploadDate}</span>
       <div className="space-x-4">
-        {fileInfo.tags.map((elem) => (
+        {postInfo.tags.map((elem) => (
           <span
             key={elem}
             className={cls(
@@ -31,7 +31,7 @@ const PostCard = ({ fileInfo, fileContents, path }: Omit<PostElemType, "path"> &
       </div>
     </div>
     <Link href={"/post/" + path}>
-      <p className="mt-4 text-base text-stone-300 cursor-pointer">{fileContents}</p>
+      <p className="mt-4 text-base text-stone-300 cursor-pointer">{postContent}</p>
     </Link>
   </article>
 );

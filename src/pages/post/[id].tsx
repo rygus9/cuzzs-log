@@ -1,9 +1,9 @@
 import fs from "fs";
-import cls from "src/utils/cls";
 import PostHeader from "src/components/Post/PostHeader";
 import { PostElemType } from "data/PostsElemType";
-import getPostData from "data/getPostData";
+import getPost from "data/getPost";
 import PostBody from "src/components/Post/PostBody";
+import getPosts from "data/getPosts";
 
 interface PostProps {
   postInfo: {
@@ -26,7 +26,7 @@ const Post = ({ postInfo, postContent }: PostProps) => {
 };
 
 export async function getStaticPaths() {
-  const posts: PostElemType[] = JSON.parse(fs.readFileSync("data/posts.json").toString());
+  const posts = getPosts();
   const pathsData = posts.map((elem, index) => ({ params: { id: `${index}` } }));
 
   return {
@@ -36,10 +36,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
-  const posts: PostElemType[] = JSON.parse(fs.readFileSync("data/posts.json").toString());
+  const posts = getPosts();
   const filePath = posts[posts.length - 1 - params.id].path;
 
-  const { postInfo, postContent } = getPostData(filePath, false);
+  const { postInfo, postContent } = getPost(filePath, false);
 
   return {
     props: { postInfo, postContent },

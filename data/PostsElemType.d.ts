@@ -1,9 +1,9 @@
 export interface PostElemType {
-  fileInfo: {
+  postInfo: {
     title: string;
     tags: string[];
     uploadDate: string;
   };
-  fileContents: string;
+  postContent: string;
   path: string;
 }
