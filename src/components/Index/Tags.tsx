@@ -21,7 +21,9 @@ const Tags = ({ tags }: TagsProps) => {
             </Disclosure.Button>
             <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md", "sm:px-4 sm:py-6")}>
               {tags.map((tag: string) => (
-                <TagButton key={tag}>{tag}</TagButton>
+                <span key={tag} className="mr-2 mt-2">
+                  <TagButton>{tag}</TagButton>
+                </span>
               ))}
             </Disclosure.Panel>
           </>
