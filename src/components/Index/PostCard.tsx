@@ -7,8 +7,9 @@ const PostCard = ({ postInfo, postContent, path }: Omit<PostElemType, "path"> & 
     <Link href={"/post/" + path}>
       <h2
         className={cls(
-          "text-2xl text-myWhite font-semibold cursor-pointer",
-          " before:content-['#'] before:pr-1 before:text-myOrange"
+          "text-xl text-myWhite font-semibold cursor-pointer",
+          "before:content-['#'] before:pr-1 before:text-myOrange",
+          "md:text-2xl"
         )}
       >
         {postInfo.title}
@@ -31,7 +32,7 @@ const PostCard = ({ postInfo, postContent, path }: Omit<PostElemType, "path"> & 
       </div>
     </div>
     <Link href={"/post/" + path}>
-      <p className="mt-4 text-base text-stone-300 cursor-pointer">{postContent}</p>
+      <p className={cls("mt-4 text-sm text-stone-300 cursor-pointer", "md:text-base")}>{postContent}</p>
     </Link>
   </article>
 );

@@ -123,6 +123,7 @@ module.exports = {
 
         base: {
           css: {
+            lineHeight: "1.45rem",
             h1: {
               fontSize: "1.8rem",
               lineHeight: "2.0rem",

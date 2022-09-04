@@ -1,6 +1,5 @@
 import { PostElemType } from "data/PostsElemType";
 import type { NextPage } from "next";
-import fs from "fs";
 import PostCard from "src/components/Index/PostCard";
 import IntroHeader from "src/components/Index/IntroHeader";
 import getPosts from "data/getPosts";
