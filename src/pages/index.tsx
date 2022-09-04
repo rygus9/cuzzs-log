@@ -7,7 +7,10 @@ import cls from "src/utils/cls";
 import getTags from "data/getTags";
 import Tags from "src/components/Index/Tags";
 
-const Home: NextPage<{ posts: Pick<PostElemType, "postInfo">[]; tags: string[] }> = ({ posts, tags }) => {
+const Home: NextPage<{ posts: Pick<PostElemType, "postInfo">[]; tags: { title: string; count: number }[] }> = ({
+  posts,
+  tags,
+}) => {
   const postLength = posts.length;
 
   return (

@@ -4,7 +4,7 @@ import cls from "src/utils/cls";
 import TagButton from "../common/TagButton";
 
 interface TagsProps {
-  tags: string[];
+  tags: { title: string; count: number }[];
 }
 
 const Tags = ({ tags }: TagsProps) => {
@@ -20,21 +20,10 @@ const Tags = ({ tags }: TagsProps) => {
               ></ChevronUpIcon>
             </Disclosure.Button>
             <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md", "sm:px-4 sm:py-6")}>
-              {tags.map((tag: string) => {
-                const tagSplits = tag.split(" ");
+              {tags.map((tag) => {
                 return (
-                  <span key={tag} className="mr-2 mt-2">
-                    <TagButton
-                      link={
-                        "/tag/" +
-                        tagSplits
-                          .splice(0, tagSplits.length - 1)
-                          .join(" ")
-                          .toLowerCase()
-                      }
-                    >
-                      {tag}
-                    </TagButton>
+                  <span key={tag.title} className="mr-2 mt-2">
+                    <TagButton link={"/tag/" + tag.title.toLowerCase()}>{tag.title + " " + tag.count}</TagButton>
                   </span>
                 );
               })}

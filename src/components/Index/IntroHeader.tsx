@@ -11,6 +11,7 @@ const IntroHeader = () => (
         width={"100%"}
         height="100%"
         className="rounded-full"
+        priority={true}
       ></Image>
     </div>
     <div className="flex flex-col">
