@@ -6,7 +6,7 @@ interface InfoAboutFile {
   isDirectory: boolean;
 }
 
-const getPostsLocation = () => {
+const getPostLocations = () => {
   let id = 0;
   const posts = [];
   const stack: InfoAboutFile[] = [];
@@ -36,4 +36,4 @@ const getPostsLocation = () => {
   return posts;
 };
 
-export default getPostsLocation;
+export default getPostLocations;
