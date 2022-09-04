@@ -1,3 +1,3 @@
-export default function cls(...classes: string[]): string {
+export default function cls(...classes: (string | boolean)[]): string {
   return classes.join(" ");
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import cls from "src/utils/cls";
+import TagButton from "../common/TagButton";
 
 interface PostHeaderProps {
   title: string;
@@ -40,16 +41,7 @@ const PostHeader = ({ title, tags, uploadDate }: PostHeaderProps) => {
           </div>
           <div className="mt-4 md:mt-0">
             {tags.map((elem) => (
-              <button
-                key={elem}
-                className={cls(
-                  "py-1 px-5 border border-myOrange rounded-xl text-white font-light uppercase text-sm",
-                  "hover:ring-1 hover:ring-myOrange transition-all"
-                )}
-                type="button"
-              >
-                {elem}
-              </button>
+              <TagButton key={elem}>{elem}</TagButton>
             ))}
           </div>
         </div>
