@@ -16,19 +16,17 @@ const PostCard = ({ postInfo, postContent, path }: Omit<PostElemType, "path"> & 
         {postInfo.title}
       </h2>
     </Link>
-    <div className="flex items-center justify-start space-x-6 mt-2">
-      <span className="text-base text-stone-400">{postInfo.uploadDate}</span>
-      <div className="space-x-4">
-        {postInfo.tags.map((elem) => (
-          <TagButton key={elem} size="sm">
-            {elem}
-          </TagButton>
-        ))}
-      </div>
+    <div className="space-x-4">
+      {postInfo.tags.map((elem) => (
+        <TagButton key={elem} type="string">
+          {elem}
+        </TagButton>
+      ))}
     </div>
     <Link href={"/post/" + path}>
-      <p className={cls("mt-4 text-sm text-stone-300 cursor-pointer", "md:text-base")}>{postContent}</p>
+      <p className={cls("text-sm text-stone-300 cursor-pointer mt-3", "md:text-base")}>{postContent}</p>
     </Link>
+    <span className={cls("inline-block text-sm text-stone-400 mt-1", "md:text-base")}>{postInfo.uploadDate}</span>
   </article>
 );
 

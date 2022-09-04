@@ -21,30 +21,16 @@ const PostHeader = ({ title, tags, uploadDate }: PostHeaderProps) => {
       >
         {title}
       </h2>
-      <div className={cls("mt-6 mb-10 w-full", "sm:mt-10 sm:mb-14", "md:mt-14 md:mb-16")}>
-        <div className={cls("flex flex-col justify-between", "md:flex-row md:items-center")}>
-          <div className="flex items-center space-x-6">
-            <figure className="w-16 h-16 rounded-full">
-              <Image
-                src={"/image/고양이.png"}
-                alt={"프로필 사진"}
-                layout="responsive"
-                width="100"
-                height="100"
-                className="rounded-full"
-              ></Image>
-            </figure>
-            <div>
-              <div className="text-2xl font-bold text-myOrange">Cuzz</div>
-              <span className="text-base text-stone-100 font-thin">{uploadDate}</span>
-            </div>
-          </div>
-          <div className="mt-4 md:mt-0">
-            {tags.map((elem) => (
-              <TagButton key={elem}>{elem}</TagButton>
-            ))}
-          </div>
-        </div>
+      <div className="mt-2">
+        {tags.map((elem) => (
+          <TagButton key={elem}>{elem}</TagButton>
+        ))}
+      </div>
+      <div className="mt-3">
+        <span className="text-xl font-bold mr-4 sm:text-2xl">
+          By <span className="text-myOrange">Cuzz</span>
+        </span>
+        <span className="text-base text-stone-400">{uploadDate}</span>
       </div>
     </>
   );

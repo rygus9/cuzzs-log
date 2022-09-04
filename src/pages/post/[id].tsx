@@ -1,6 +1,4 @@
-import fs from "fs";
 import PostHeader from "src/components/Post/PostHeader";
-import { PostElemType } from "data/PostsElemType";
 import getPost from "data/getPost";
 import PostBody from "src/components/Post/PostBody";
 import getPosts from "data/getPosts";

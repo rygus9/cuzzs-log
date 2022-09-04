@@ -16,7 +16,7 @@ const Tags = ({ tags }: TagsProps) => {
             <Disclosure.Button className="text-2xl text-myWhite font-bold flex items-center justify-end w-full">
               TAGS
               <ChevronUpIcon
-                className={cls("w-10 h-10 text-myOrange", open ? "rotate-180 transform" : "")}
+                className={cls("w-10 h-10 text-myOrange", open ? "" : "rotate-180 transform")}
               ></ChevronUpIcon>
             </Disclosure.Button>
             <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md", "sm:px-4 sm:py-6")}>
