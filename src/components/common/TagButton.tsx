@@ -6,9 +6,10 @@ interface TagButonProps {
   type?: "string" | "button";
   link?: string;
   children: string;
+  selected?: boolean;
 }
 
-const TagButton = ({ children, link, type = "button" }: TagButonProps) => {
+const TagButton = ({ children, link, type = "button", selected = false }: TagButonProps) => {
   return (
     <>
       {type === "button" && (
@@ -17,6 +18,7 @@ const TagButton = ({ children, link, type = "button" }: TagButonProps) => {
             className={cls(
               "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
               "border border-myOrange rounded-md bg-myBlack text-myWhite cursor-pointer",
+              selected && "ring-1 ring-myOrange",
               "hover:ring-1 hover:ring-myOrange"
             )}
           >

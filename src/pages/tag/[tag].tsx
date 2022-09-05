@@ -7,16 +7,19 @@ import PostCard from "src/components/Index/PostCard";
 import Tags from "src/components/Index/Tags";
 import cls from "src/utils/cls";
 
-const PostList: NextPage<{ posts: Pick<PostElemType, "postInfo">[]; tags: { title: string; count: number }[] }> = ({
-  posts,
-  tags,
-}) => {
+interface PostListProps {
+  posts: Pick<PostElemType, "postInfo">[];
+  tags: { title: string; count: number }[];
+  nowTag: string;
+}
+
+const PostList: NextPage<PostListProps> = ({ posts, tags, nowTag }) => {
   const postLength = posts.length;
 
   return (
     <>
       <IntroHeader></IntroHeader>
-      <Tags tags={tags}></Tags>
+      <Tags tags={tags} nowTag={nowTag}></Tags>
       <section
         className={cls("mt-2 border-y border-dashed border-y-stone-400 divide-y-[1px] divide-dashed divide-stone-400")}
       >
@@ -48,6 +51,7 @@ export async function getStaticProps({ params }: { params: any }) {
         .filter((post) => post.postInfo.tags.includes(params.tag))
         .map((post) => ({ postInfo: post.postInfo })),
       tags,
+      nowTag: params.tag,
     },
   };
 }

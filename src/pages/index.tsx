@@ -16,7 +16,7 @@ const Home: NextPage<{ posts: Pick<PostElemType, "postInfo">[]; tags: { title: s
   return (
     <>
       <IntroHeader></IntroHeader>
-      <Tags tags={tags}></Tags>
+      <Tags tags={tags} nowTag="all"></Tags>
       <section
         className={cls("mt-2 border-y border-dashed border-y-stone-400 divide-y-[1px] divide-dashed divide-stone-400")}
       >

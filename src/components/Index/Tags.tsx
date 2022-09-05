@@ -5,9 +5,13 @@ import TagButton from "../common/TagButton";
 
 interface TagsProps {
   tags: { title: string; count: number }[];
+  nowTag: string;
 }
 
-const Tags = ({ tags }: TagsProps) => {
+const Tags = ({ tags, nowTag }: TagsProps) => {
+  tags.sort((a, b) => (a.title < b.title ? -1 : 1));
+  const totalCount = tags.reduce((curr, now) => curr + now.count, 0);
+
   return (
     <section className={cls("mt-4", "md:mt-8")}>
       <Disclosure>
@@ -20,10 +24,15 @@ const Tags = ({ tags }: TagsProps) => {
               ></ChevronUpIcon>
             </Disclosure.Button>
             <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md", "sm:px-4 sm:py-6")}>
+              <span className="mr-2 mt-2">
+                <TagButton link="/" selected={nowTag === "all"}>{`All ${totalCount}`}</TagButton>
+              </span>
               {tags.map((tag) => {
                 return (
                   <span key={tag.title} className="mr-2 mt-2">
-                    <TagButton link={"/tag/" + tag.title.toLowerCase()}>{tag.title + " " + tag.count}</TagButton>
+                    <TagButton link={"/tag/" + tag.title.toLowerCase()} selected={nowTag === tag.title.toLowerCase()}>
+                      {tag.title + " " + tag.count}
+                    </TagButton>
                   </span>
                 );
               })}

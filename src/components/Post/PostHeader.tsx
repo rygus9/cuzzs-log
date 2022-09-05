@@ -1,4 +1,3 @@
-import Image from "next/image";
 import cls from "src/utils/cls";
 import TagButton from "../common/TagButton";
 
