@@ -19,6 +19,8 @@
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.3",
     "react-syntax-highlighter": "^15.5.0",
+    "rehype-raw": "^6.1.1",
+    "rehype-urls": "^1.1.1",
     "styled-jsx": "^5.0.5"
   },
   "devDependencies": {

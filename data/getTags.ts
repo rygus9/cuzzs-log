@@ -10,7 +10,10 @@ const getTags = () => {
       .map((tag: string) => tag.toUpperCase())
       .map((tag: string) => (tag in tags ? (tags[tag] += 1) : (tags[tag] = 1)))
   );
-  return Object.entries(tags).map(([key, value]) => ({ title: key, count: value })) as { title: string; count: number}[];
+  return Object.entries(tags).map(([key, value]) => ({ title: key, count: value })) as {
+    title: string;
+    count: number;
+  }[];
 };
 
 export default getTags;

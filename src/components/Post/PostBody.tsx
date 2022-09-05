@@ -2,9 +2,26 @@ import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import cls from "src/utils/cls";
+//@ts-ignore
+import urls from "rehype-urls";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
+
+const PostBody = ({ children }: { children: string }) => {
+  return (
+    <section className={cls("prose prose-base prose-invert m-auto max-w-none", "md:prose-lg")}>
+      <ReactMarkdown
+        components={{ a: LinkRenderer, pre: preRenderer }}
+        rehypePlugins={[rehypeRaw, [urls, removeBaseUrl]]}
+        className="w-full"
+      >
+        {children}
+      </ReactMarkdown>
+    </section>
+  );
+};
 
 function LinkRenderer(props: any) {
   return (
@@ -27,14 +44,11 @@ function preRenderer(props: any) {
   );
 }
 
-const PostBody = ({ children }: { children: string }) => {
-  return (
-    <section className={cls("prose prose-base prose-invert m-auto max-w-none", "md:prose-lg")}>
-      <ReactMarkdown components={{ a: LinkRenderer, pre: preRenderer }} className="w-full">
-        {children}
-      </ReactMarkdown>
-    </section>
-  );
-};
+function removeBaseUrl(url: any) {
+  if (url.href.includes("public")) {
+    return url.path.replace(/.*\/public/, "");
+  }
+  return url.href;
+}
 
 export default PostBody;
