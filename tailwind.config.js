@@ -2,7 +2,7 @@ const colors = {
   myBlack: "#101010",
   myOrange: "#f2aa4c",
   myWhite: "#dedede",
-  myGray: "#2f2f2f",
+  myGray: "#2b2b2b",
 };
 
 module.exports = {
@@ -39,8 +39,8 @@ module.exports = {
             "--tw-prose-invert-code": colors.myOrange,
             "--tw-prose-pre-code": colors.myOrange,
             "--tw-prose-invert-pre-code": colors.myOrange,
-            "--tw-prose-pre-bg": "#181818",
-            "--tw-prose-invert-pre-bg": "#181818",
+            "--tw-prose-pre-bg": colors.myGray,
+            "--tw-prose-invert-pre-bg": colors.myGray,
             "--tw-prose-th-borders": colors.myOrange,
             "--tw-prose-invert-th-borders": colors.myOrange,
             "--tw-prose-td-borders": colors.myOrange,
@@ -131,6 +131,11 @@ module.exports = {
               marginTop: "0.4rem",
               marginBottom: "0.4rem",
             },
+
+            "code>pre": {
+              marginTop: "0",
+              marginBottom: "0",
+            },
           },
         },
 
@@ -141,6 +146,11 @@ module.exports = {
               fontSize: "1.8rem",
               lineHeight: "2.0rem",
               letterSpacing: "-1.25px",
+            },
+
+            "code>pre": {
+              marginTop: "0",
+              marginBottom: "0",
             },
           },
         },
