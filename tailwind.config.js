@@ -103,7 +103,7 @@ module.exports = {
         },
         lg: {
           css: {
-            fontSize: "1.1rem",
+            fontSize: "1rem",
             lineHeight: "1.8rem",
 
             h1: {
@@ -152,28 +152,6 @@ module.exports = {
             "code>pre": {
               marginTop: "0",
               marginBottom: "0",
-            },
-          },
-        },
-
-        base: {
-          css: {
-            fontSize: "1.05rem",
-            lineHeight: "1.7rem",
-            h1: {
-              fontSize: "1.8rem",
-              lineHeight: "2.0rem",
-              letterSpacing: "-1.25px",
-            },
-
-            "code>pre": {
-              marginTop: "0",
-              marginBottom: "0",
-            },
-
-            p: {
-              marginTop: "0.7em",
-              marginBottom: "0.7em",
             },
           },
         },

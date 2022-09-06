@@ -11,7 +11,7 @@ SyntaxHighlighter.registerLanguage("tsx", tsx);
 
 const PostBody = ({ children }: { children: string }) => {
   return (
-    <section className={cls("prose prose-base prose-invert m-auto max-w-none", "md:prose-lg")}>
+    <section className={cls("prose prose-lg prose-invert m-auto max-w-none")}>
       <ReactMarkdown
         components={{ a: LinkRenderer, pre: preRenderer }}
         rehypePlugins={[rehypeRaw, [urls, removeBaseUrl]]}
