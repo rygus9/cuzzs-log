@@ -11,7 +11,7 @@ const About = () => {
       className="text-center mt-20"
     >
       <h1 className="text-4xl uppercase tracking-wide">Coming Soon</h1>
-      <p className="text-lg text-stone-400">뭘 그릴지 고민 중이라 화면이 구상되면 할께요.</p>
+      <p className="text-lg text-stone-400">뭘 그릴지 고민 중이라 화면이 구상되면 할게요.</p>
     </motion.div>
   );
 };
