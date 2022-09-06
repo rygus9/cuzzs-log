@@ -1,4 +1,5 @@
 export interface PostElemType {
+  id: number;
   postInfo: {
     title: string;
     tags: string[];

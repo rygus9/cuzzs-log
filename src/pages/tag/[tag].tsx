@@ -8,14 +8,12 @@ import Tags from "src/components/Index/Tags";
 import cls from "src/utils/cls";
 
 interface PostListProps {
-  posts: Pick<PostElemType, "postInfo">[];
+  posts: Pick<PostElemType, "postInfo" | "id">[];
   tags: { title: string; count: number }[];
   nowTag: string;
 }
 
 const PostList: NextPage<PostListProps> = ({ posts, tags, nowTag }) => {
-  const postLength = posts.length;
-
   return (
     <>
       <IntroHeader></IntroHeader>
@@ -24,7 +22,7 @@ const PostList: NextPage<PostListProps> = ({ posts, tags, nowTag }) => {
         className={cls("mt-2 border-y border-dashed border-y-stone-400 divide-y-[1px] divide-dashed divide-stone-400")}
       >
         {posts.map((elem, index) => (
-          <PostCard key={elem.postInfo.uploadDate} {...elem} path={postLength - index - 1}></PostCard>
+          <PostCard key={elem.postInfo.uploadDate} {...elem} path={elem.id}></PostCard>
         ))}
       </section>
     </>
@@ -49,7 +47,7 @@ export async function getStaticProps({ params }: { params: any }) {
     props: {
       posts: posts
         .filter((post) => post.postInfo.tags.includes(params.tag))
-        .map((post) => ({ postInfo: post.postInfo })),
+        .map((post) => ({ postInfo: post.postInfo, id: post.id })),
       tags,
       nowTag: params.tag,
     },
