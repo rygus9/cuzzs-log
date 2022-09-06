@@ -2,6 +2,7 @@ const colors = {
   myBlack: "#101010",
   myOrange: "#f2aa4c",
   myWhite: "#dedede",
+  myLightStone: "#cac7c4",
   myGray: "#2b2b2b",
 };
 
@@ -15,8 +16,8 @@ module.exports = {
           css: {
             "--tw-prose-links": colors.myWhite,
             "--tw-prose-invert-links": colors.myWhite,
-            "--tw-prose-body": colors.myWhite,
-            "--tw-prose-invert-body": colors.myWhite,
+            "--tw-prose-body": colors.myLightStone,
+            "--tw-prose-invert-body": colors.myLightStone,
             "--tw-prose-headings": colors.myWhite,
             "--tw-prose-invert-headings": colors.myWhite,
             "--tw-prose-lead": colors.myWhite,
@@ -29,8 +30,8 @@ module.exports = {
             "--tw-prose-invert-bullets": colors.myOrange,
             "--tw-prose-hr": colors.myOrange,
             "--tw-prose-invert-hr": colors.myOrange,
-            "--tw-prose-quotes": colors.myWhite,
-            "--tw-prose-invert-quotes": colors.myWhite,
+            "--tw-prose-quotes": colors.myLightStone,
+            "--tw-prose-invert-quotes": colors.myLightStone,
             "--tw-prose-quote-borders": colors.myOrange,
             "--tw-prose-invert-quote-borders": colors.myOrange,
             "--tw-prose-captions": colors.myOrange,
@@ -46,7 +47,6 @@ module.exports = {
             "--tw-prose-td-borders": colors.myOrange,
             "--tw-prose-invert-td-borders": colors.myOrange,
 
-            fontSize: "3rem",
             p: {
               whiteSpace: "pre-wrap",
             },
@@ -60,9 +60,21 @@ module.exports = {
               content: '"# "',
               color: colors.myOrange,
             },
+            "h4,h5,h6::before": {
+              content: '"# "',
+              color: colors.myWhite,
+            },
+            "h4,h5,h6": {
+              color: colors.myWhite,
+            },
 
             strong: {
               fontWeight: "bold",
+            },
+
+            "li>p:first-of-type": {
+              color: colors.myWhite,
+              fontWeight: "semibold",
             },
 
             "strong::before": {
@@ -91,8 +103,8 @@ module.exports = {
         },
         lg: {
           css: {
-            fontSize: "1rem",
-            lineHeight: "1.5rem",
+            fontSize: "1.1rem",
+            lineHeight: "1.8rem",
 
             h1: {
               fontSize: "2.25rem",
@@ -132,6 +144,11 @@ module.exports = {
               marginBottom: "0.4rem",
             },
 
+            p: {
+              marginTop: "0.9em",
+              marginBottom: "0.9em",
+            },
+
             "code>pre": {
               marginTop: "0",
               marginBottom: "0",
@@ -141,7 +158,8 @@ module.exports = {
 
         base: {
           css: {
-            lineHeight: "1.45rem",
+            fontSize: "1.05rem",
+            lineHeight: "1.7rem",
             h1: {
               fontSize: "1.8rem",
               lineHeight: "2.0rem",
@@ -151,6 +169,11 @@ module.exports = {
             "code>pre": {
               marginTop: "0",
               marginBottom: "0",
+            },
+
+            p: {
+              marginTop: "0.7em",
+              marginBottom: "0.7em",
             },
           },
         },
