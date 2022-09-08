@@ -2,6 +2,7 @@ import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import cls from "src/utils/cls";
 //@ts-ignore
@@ -14,6 +15,7 @@ const PostBody = ({ children }: { children: string }) => {
     <section className={cls("prose prose-lg prose-invert m-auto max-w-none")}>
       <ReactMarkdown
         components={{ a: LinkRenderer, pre: preRenderer }}
+        remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, [urls, removeBaseUrl]]}
         className="w-full"
       >

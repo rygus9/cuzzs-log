@@ -44,8 +44,8 @@ module.exports = {
             "--tw-prose-invert-pre-bg": colors.myGray,
             "--tw-prose-th-borders": colors.myOrange,
             "--tw-prose-invert-th-borders": colors.myOrange,
-            "--tw-prose-td-borders": colors.myOrange,
-            "--tw-prose-invert-td-borders": colors.myOrange,
+            "--tw-prose-td-borders": colors.myWhite,
+            "--tw-prose-invert-td-borders": colors.myWhite,
 
             p: {
               whiteSpace: "pre-wrap",
@@ -72,11 +72,6 @@ module.exports = {
               fontWeight: "bold",
             },
 
-            "li>p:first-of-type": {
-              color: colors.myWhite,
-              fontWeight: "semibold",
-            },
-
             "strong::before": {
               content: "open-quote",
             },
@@ -98,6 +93,26 @@ module.exports = {
             },
             "blockquote p:last-of-type::after": {
               content: "",
+            },
+            "tbody>tr>td": {
+              borderLeft: "1px solid " + colors.myWhite,
+              borderRight: "1px solid" + colors.myWhite,
+              borderBottom: "1px solid " + colors.myWhite,
+              paddingLeft: "0px !important",
+              paddingRight: "0px !important",
+              paddingBottom: "5px !important",
+              paddingTop: "5px !important",
+            },
+            "thead>tr>th": {
+              borderLeft: "1px solid " + colors.myOrange,
+              borderRight: "1px solid" + colors.myOrange,
+              borderTop: "1px solid " + colors.myOrange,
+              borderBottom: "1px solid " + colors.myOrange,
+              color: colors.myOrange,
+              paddingLeft: "0px !important",
+              paddingRight: "0px !important",
+              paddingBottom: "5px !important",
+              paddingTop: "5px !important",
             },
           },
         },
