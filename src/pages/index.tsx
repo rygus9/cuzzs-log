@@ -6,6 +6,7 @@ import getPosts from "data/getPosts";
 import cls from "src/utils/cls";
 import getTags from "data/getTags";
 import Tags from "src/components/Index/Tags";
+import Head from "next/head";
 
 const Home: NextPage<{ posts: Pick<PostElemType, "postInfo" | "id">[]; tags: { title: string; count: number }[] }> = ({
   posts,
@@ -13,6 +14,9 @@ const Home: NextPage<{ posts: Pick<PostElemType, "postInfo" | "id">[]; tags: { t
 }) => {
   return (
     <>
+      <Head>
+        <title>Cuzz&apos;s Log</title>
+      </Head>
       <IntroHeader></IntroHeader>
       <Tags tags={tags} nowTag="all"></Tags>
       <section

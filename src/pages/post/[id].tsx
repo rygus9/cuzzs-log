@@ -3,6 +3,7 @@ import getPost from "data/getPost";
 import PostBody from "src/components/Post/PostBody";
 import getPosts from "data/getPosts";
 import PostFooter from "src/components/Post/PostFooter";
+import Head from "next/head";
 
 interface PostProps {
   postInfo: {
@@ -16,6 +17,9 @@ interface PostProps {
 const Post = ({ postInfo, postContent }: PostProps) => {
   return (
     <>
+      <Head>
+        <title>{postInfo.title}</title>
+      </Head>
       <header className="pb-4 text-stone-300">
         <PostHeader {...postInfo} />
       </header>

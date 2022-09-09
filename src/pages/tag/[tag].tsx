@@ -2,6 +2,7 @@ import getPosts from "data/getPosts";
 import getTags from "data/getTags";
 import { PostElemType } from "data/PostsElemType";
 import { NextPage } from "next";
+import Head from "next/head";
 import IntroHeader from "src/components/Index/IntroHeader";
 import PostCard from "src/components/Index/PostCard";
 import Tags from "src/components/Index/Tags";
@@ -16,6 +17,9 @@ interface PostListProps {
 const PostList: NextPage<PostListProps> = ({ posts, tags, nowTag }) => {
   return (
     <>
+      <Head>
+        <title>{`Tag - ${nowTag}`}</title>
+      </Head>
       <IntroHeader></IntroHeader>
       <Tags tags={tags} nowTag={nowTag}></Tags>
       <section
