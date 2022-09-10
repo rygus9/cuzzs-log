@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw";
 import cls from "src/utils/cls";
 //@ts-ignore
 import urls from "rehype-urls";
+import Image from "next/future/image";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 
@@ -14,7 +15,7 @@ const PostBody = ({ children }: { children: string }) => {
   return (
     <section className={cls("prose prose-lg prose-invert m-auto max-w-none")}>
       <ReactMarkdown
-        components={{ a: LinkRenderer, pre: preRenderer }}
+        components={{ a: LinkRenderer, pre: preRenderer, img: imgRenderer }}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, [urls, removeBaseUrl]]}
         className="w-full"
@@ -31,6 +32,10 @@ function LinkRenderer(props: any) {
       {props.children}
     </a>
   );
+}
+
+function imgRenderer(props: any) {
+  return <Image src={props.src} alt="blog images" sizes="100vw" quality={80}></Image>;
 }
 
 function preRenderer(props: any) {

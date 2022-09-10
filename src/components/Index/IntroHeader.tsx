@@ -8,9 +8,10 @@ const IntroHeader = () => (
         src="/image/고양이.png"
         alt="이미지 하나"
         layout="responsive"
-        width={"100%"}
-        height="100%"
+        width={"100"}
+        height={"100"}
         className="rounded-full"
+        sizes="30vw"
         priority={true}
       ></Image>
     </div>
