@@ -35,7 +35,7 @@ function LinkRenderer(props: any) {
 }
 
 function imgRenderer(props: any) {
-  return <Image src={props.src} alt="blog images" sizes="100vw" quality={80}></Image>;
+  return <Image src={props.src} alt="blog images" sizes="100vw" quality={80} loading="lazy"></Image>;
 }
 
 function preRenderer(props: any) {
