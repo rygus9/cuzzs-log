@@ -47,8 +47,17 @@ module.exports = {
             "--tw-prose-td-borders": colors.myWhite,
             "--tw-prose-invert-td-borders": colors.myWhite,
 
+            a: {
+              wordWrap: "break-word",
+            },
+
             p: {
               whiteSpace: "pre-wrap",
+            },
+
+            img: {
+              width: "95%",
+              margin: "auto",
             },
 
             "h1,h2,h3,h4,h5,h6": {
