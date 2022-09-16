@@ -1,6 +1,6 @@
-import getPosts from "data/getPosts";
-import getTags from "data/getTags";
-import { PostElemType } from "data/PostsElemType";
+import getPosts from "inbuild/getPosts";
+import getTags from "inbuild/getTags";
+import { PostElemType } from "inbuild/PostsElemType";
 import { NextPage } from "next";
 import Head from "next/head";
 import IntroHeader from "src/components/Index/IntroHeader";

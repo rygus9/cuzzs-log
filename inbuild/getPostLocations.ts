@@ -1,4 +1,4 @@
-import fs, { Dirent } from "fs";
+import fs from "fs";
 
 interface InfoAboutFile {
   path: string;
@@ -11,8 +11,8 @@ const postsRoot = "public/posts";
 const getPostLocations = () => {
   let id = 0;
   const posts = [];
-  const stack: InfoAboutFile[] = [];
 
+  const stack: InfoAboutFile[] = [];
   const basefiles = fs.readdirSync(postsRoot, { withFileTypes: true });
 
   stack.push(

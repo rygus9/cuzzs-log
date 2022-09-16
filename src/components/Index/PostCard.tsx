@@ -1,4 +1,4 @@
-import { PostElemType } from "data/PostsElemType";
+import { PostElemType } from "inbuild/PostsElemType";
 import Link from "next/link";
 import cls from "src/utils/cls";
 import TagButton from "../common/TagButton";

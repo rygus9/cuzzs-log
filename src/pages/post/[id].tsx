@@ -1,7 +1,7 @@
 import PostHeader from "src/components/Post/PostHeader";
-import getPost from "data/getPost";
+import getPost from "inbuild/getPost";
 import PostBody from "src/components/Post/PostBody";
-import getPosts from "data/getPosts";
+import getPosts from "inbuild/getPosts";
 import PostFooter from "src/components/Post/PostFooter";
 import Head from "next/head";
 

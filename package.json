@@ -7,7 +7,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "makeData": "ts-node data/makeLocationData.ts"
+    "optImage": "node ./inprebuild/imageOpt.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
@@ -34,6 +34,7 @@
     "eslint": "8.18.0",
     "eslint-config-next": "12.2.0",
     "postcss": "^8.4.14",
+    "sharp": "^0.31.0",
     "tailwindcss": "^3.1.4",
     "typescript": "4.7.4"
   }

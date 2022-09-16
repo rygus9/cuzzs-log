@@ -1,10 +1,10 @@
-import { PostElemType } from "data/PostsElemType";
+import { PostElemType } from "inbuild/PostsElemType";
 import type { NextPage } from "next";
 import PostCard from "src/components/Index/PostCard";
 import IntroHeader from "src/components/Index/IntroHeader";
-import getPosts from "data/getPosts";
+import getPosts from "inbuild/getPosts";
 import cls from "src/utils/cls";
-import getTags from "data/getTags";
+import getTags from "inbuild/getTags";
 import Tags from "src/components/Index/Tags";
 import Head from "next/head";
 
