@@ -8,6 +8,8 @@ import cls from "src/utils/cls";
 //@ts-ignore
 import urls from "rehype-urls";
 import Image from "next/image";
+import getImageLocation from "src/utils/getSrcset";
+import OptImage from "../common/OptImage";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 
@@ -34,21 +36,20 @@ function LinkRenderer(props: any) {
   );
 }
 
-const postfixs = ["520", "800", "1440"];
 function imgRenderer(props: any) {
-  let originSrc = props.src;
-  let srcSplit = originSrc.split("/");
-  const filename = srcSplit.slice(-1)[0];
-  const name = filename.split(".")[0];
-  const ext = "webp";
-  const dirname = srcSplit.slice(0, -1).join("/") + "/optImage/";
-  let srcset = "";
-
-  for (const postfix of postfixs) {
-    srcset += dirname + name + "w" + postfix + "." + ext + " " + postfix + "w" + ",";
-  }
-  const src = dirname + name + "w1440." + ext;
-  return <img decoding="async" loading="lazy" alt="blog images" srcSet={srcset} src={src}></img>;
+  const { src, srcset } = getImageLocation(props.src);
+  const { width, height, alt } = props;
+  return (
+    <OptImage
+      alt={alt}
+      srcSet={srcset}
+      src={src}
+      width={width}
+      height={height}
+      loading="lazy"
+      decoding="async"
+    ></OptImage>
+  );
 }
 
 function preRenderer(props: any) {
