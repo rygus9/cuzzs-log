@@ -1,16 +1,11 @@
 import PostHeader from "src/components/Post/PostHeader";
-import getPost from "inbuild/getPost";
 import PostBody from "src/components/Post/PostBody";
-import getPosts from "inbuild/getPosts";
 import PostFooter from "src/components/Post/PostFooter";
 import Head from "next/head";
+import { getPostContent, getPosts, PostInfo } from "inbuild/getPostInfo";
 
 interface PostProps {
-  postInfo: {
-    title: string;
-    uploadDate: string;
-    tags: string[];
-  };
+  postInfo: PostInfo;
   postContent: string;
 }
 
@@ -21,7 +16,7 @@ const Post = ({ postInfo, postContent }: PostProps) => {
         <title>{postInfo.title}</title>
       </Head>
       <header className="pb-4 text-stone-300">
-        <PostHeader {...postInfo} />
+        <PostHeader title={postInfo.title} category={postInfo.category} />
       </header>
       <PostBody>{postContent}</PostBody>
       <PostFooter uploadDate={postInfo.uploadDate}></PostFooter>
@@ -31,7 +26,7 @@ const Post = ({ postInfo, postContent }: PostProps) => {
 
 export async function getStaticPaths() {
   const posts = getPosts();
-  const pathsData = posts.map((elem, index) => ({ params: { id: `${index}` } }));
+  const pathsData = posts.map((elem) => ({ params: { id: `${elem.id}` } }));
 
   return {
     paths: pathsData,
@@ -41,9 +36,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: { params: any }) {
   const posts = getPosts();
-  const filePath = posts[posts.length - 1 - params.id].path;
-
-  const { postInfo, postContent } = getPost(filePath, false);
+  const post = posts.filter((post) => post.id == params.id)[0];
+  const filePath = post.path;
+  const postInfo = post.postInfo;
+  const postContent = getPostContent(filePath);
 
   return {
     props: { postInfo, postContent },

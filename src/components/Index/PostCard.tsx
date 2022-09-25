@@ -1,9 +1,9 @@
-import { PostElemType } from "inbuild/PostsElemType";
+import { PostElem } from "inbuild/getPostInfo";
 import Link from "next/link";
 import cls from "src/utils/cls";
-import TagButton from "../common/TagButton";
+import CategoryButton from "../common/CategoryButton";
 
-const PostCard = ({ postInfo, path }: Pick<PostElemType, "postInfo"> & { path: number }) => (
+const PostCard = ({ postInfo, path }: Pick<PostElem, "postInfo"> & { path: number }) => (
   <article className="h-48 flex justify-center flex-col">
     <Link href={"/post/" + path}>
       <h2
@@ -17,11 +17,9 @@ const PostCard = ({ postInfo, path }: Pick<PostElemType, "postInfo"> & { path: n
       </h2>
     </Link>
     <div className="space-x-4">
-      {postInfo.tags.map((elem) => (
-        <TagButton key={elem} type="string">
-          {elem}
-        </TagButton>
-      ))}
+      <CategoryButton key={postInfo.category} type="string">
+        {postInfo.category}
+      </CategoryButton>
     </div>
     <Link href={"/post/" + path}>
       <p className={cls("text-sm text-stone-300 cursor-pointer mt-3", "md:text-base")}>{postInfo.description}</p>

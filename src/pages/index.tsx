@@ -1,24 +1,24 @@
-import { PostElemType } from "inbuild/PostsElemType";
 import type { NextPage } from "next";
 import PostCard from "src/components/Index/PostCard";
 import IntroHeader from "src/components/Index/IntroHeader";
-import getPosts from "inbuild/getPosts";
 import cls from "src/utils/cls";
-import getTags from "inbuild/getTags";
-import Tags from "src/components/Index/Tags";
+import Categorys from "src/components/Index/Categorys";
 import Head from "next/head";
+import { Category, getCategorys, getPosts, PostElem } from "inbuild/getPostInfo";
 
-const Home: NextPage<{ posts: Pick<PostElemType, "postInfo" | "id">[]; tags: { title: string; count: number }[] }> = ({
-  posts,
-  tags,
-}) => {
+interface HomePorps {
+  posts: Pick<PostElem, "postInfo" | "id">[];
+  categorys: Category[];
+}
+
+const Home: NextPage<HomePorps> = ({ posts, categorys }) => {
   return (
     <>
       <Head>
         <title>Cuzz&apos;s Log</title>
       </Head>
       <IntroHeader></IntroHeader>
-      <Tags tags={tags} nowTag="all"></Tags>
+      <Categorys categorys={categorys} nowCategory="all"></Categorys>
       <section
         className={cls("mt-2 border-y border-dashed border-y-stone-400 divide-y-[1px] divide-dashed divide-stone-400")}
       >
@@ -32,10 +32,10 @@ const Home: NextPage<{ posts: Pick<PostElemType, "postInfo" | "id">[]; tags: { t
 
 export async function getStaticProps() {
   const posts = getPosts();
-  const tags = getTags();
+  const categorys = getCategorys();
 
   return {
-    props: { posts: posts.map((elem) => ({ postInfo: elem.postInfo, id: elem.id })), tags },
+    props: { posts: posts.map((elem) => ({ postInfo: elem.postInfo, id: elem.id })), categorys },
   };
 }
 

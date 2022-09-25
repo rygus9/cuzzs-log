@@ -1,7 +1,7 @@
 import Link from "next/link";
 import cls from "src/utils/cls";
 
-interface TagButonProps {
+interface CategoryButonProps {
   size?: "sm" | "base";
   type?: "string" | "button";
   link?: string;
@@ -9,11 +9,11 @@ interface TagButonProps {
   selected?: boolean;
 }
 
-const TagButton = ({ children, link, type = "button", selected = false }: TagButonProps) => {
+const CategoryButton = ({ children, link, type = "button", selected = false }: CategoryButonProps) => {
   return (
     <>
       {type === "button" && (
-        <Link href={link ? link : `/tag/${children.toLowerCase()}`}>
+        <Link href={link ? link : `/category/${children.toLowerCase()}`}>
           <a
             className={cls(
               "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
@@ -27,7 +27,7 @@ const TagButton = ({ children, link, type = "button", selected = false }: TagBut
         </Link>
       )}
       {type === "string" && (
-        <Link href={`/tag/${children.toLowerCase()}`}>
+        <Link href={`/category/${children.toLowerCase()}`}>
           <a className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline")}>
             {"# " + children.toUpperCase()}
           </a>
@@ -37,4 +37,4 @@ const TagButton = ({ children, link, type = "button", selected = false }: TagBut
   );
 };
 
-export default TagButton;
+export default CategoryButton;

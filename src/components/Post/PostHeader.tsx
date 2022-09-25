@@ -1,12 +1,12 @@
 import cls from "src/utils/cls";
-import TagButton from "../common/TagButton";
+import CategoryButton from "../common/CategoryButton";
 
 interface PostHeaderProps {
   title: string;
-  tags: string[];
+  category: string;
 }
 
-const PostHeader = ({ title, tags }: PostHeaderProps) => {
+const PostHeader = ({ title, category }: PostHeaderProps) => {
   return (
     <>
       <h2
@@ -20,9 +20,7 @@ const PostHeader = ({ title, tags }: PostHeaderProps) => {
         {title}
       </h2>
       <div className="mt-2">
-        {tags.map((elem) => (
-          <TagButton key={elem}>{elem}</TagButton>
-        ))}
+        <CategoryButton key={category}>{category}</CategoryButton>
       </div>
     </>
   );
