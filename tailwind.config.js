@@ -2,7 +2,7 @@ const colors = {
   myBlack: "#101010",
   myOrange: "#f2aa4c",
   myWhite: "#dedede",
-  myLightStone: "#cac7c4",
+  myLightStone: "#dad7d4",
   myGray: "#2b2b2b",
 };
 

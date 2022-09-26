@@ -7,9 +7,10 @@ interface CategoryButonProps {
   link?: string;
   children: string;
   selected?: boolean;
+  className?: string;
 }
 
-const CategoryButton = ({ children, link, type = "button", selected = false }: CategoryButonProps) => {
+const Button = ({ children, link, type = "button", selected = false, className = "" }: CategoryButonProps) => {
   return (
     <>
       {type === "button" && (
@@ -19,7 +20,8 @@ const CategoryButton = ({ children, link, type = "button", selected = false }: C
               "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
               "border border-myOrange rounded-md bg-myBlack text-myWhite cursor-pointer",
               selected && "ring-1 ring-myOrange",
-              "hover:ring-1 hover:ring-myOrange"
+              "hover:ring-1 hover:ring-myOrange",
+              className
             )}
           >
             {"# " + children.toUpperCase()}
@@ -28,7 +30,7 @@ const CategoryButton = ({ children, link, type = "button", selected = false }: C
       )}
       {type === "string" && (
         <Link href={`/category/${children.toLowerCase()}`}>
-          <a className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline")}>
+          <a className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline", className)}>
             {"# " + children.toUpperCase()}
           </a>
         </Link>
@@ -37,4 +39,4 @@ const CategoryButton = ({ children, link, type = "button", selected = false }: C
   );
 };
 
-export default CategoryButton;
+export default Button;

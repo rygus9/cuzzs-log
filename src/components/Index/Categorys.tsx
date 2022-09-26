@@ -2,7 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { Category } from "inbuild/getPostInfo";
 import cls from "src/utils/cls";
-import CategoryButton from "../common/CategoryButton";
+import Button from "../common/Button";
 
 interface CategorysProps {
   categorys: Category[];
@@ -17,25 +17,28 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
       <Disclosure>
         {({ open }) => (
           <>
-            <Disclosure.Button className="text-2xl text-myWhite font-bold flex items-center justify-end w-full">
-              CATEGORY
-              <ChevronUpIcon
-                className={cls("w-10 h-10 text-myOrange", open ? "" : "rotate-180 transform")}
-              ></ChevronUpIcon>
+            <Disclosure.Button className="text-2xl text-myWhite font-bold flex items-center justify-between w-full">
+              <span className="uppercase text-myOrange text-xl">{nowCategory}</span>
+              <div className="flex items-center">
+                CATEGORY
+                <ChevronUpIcon
+                  className={cls("w-10 h-10 text-myOrange", open ? "" : "rotate-180 transform")}
+                ></ChevronUpIcon>
+              </div>
             </Disclosure.Button>
             <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md", "sm:px-4 sm:py-6")}>
               <span className="mr-2 mt-2">
-                <CategoryButton link="/" selected={nowCategory === "all"}>{`All`}</CategoryButton>
+                <Button link="/" selected={nowCategory === "all"}>{`All`}</Button>
               </span>
               {categorys.map((category) => {
                 return (
                   <span key={category.categoryName} className="mr-2 mt-2">
-                    <CategoryButton
+                    <Button
                       link={"/category/" + category.categoryName.toLowerCase()}
                       selected={nowCategory === category.categoryName.toLowerCase()}
                     >
                       {category.categoryName}
-                    </CategoryButton>
+                    </Button>
                   </span>
                 );
               })}

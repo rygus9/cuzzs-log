@@ -5,35 +5,39 @@ import IntroHeader from "src/components/Index/IntroHeader";
 import PostCard from "src/components/Index/PostCard";
 import Categorys from "src/components/Index/Categorys";
 import cls from "src/utils/cls";
+import PageNavigation from "src/components/Index/PageNavigation";
 
 interface PostListProps {
   posts: Pick<PostElem, "postInfo" | "id">[];
   categorys: Category[];
-  nowCategory: string;
+  maxPage: number;
+  nowPage: number;
 }
 
-const PostList: NextPage<PostListProps> = ({ posts, categorys, nowCategory }) => {
+const PostList: NextPage<PostListProps> = ({ posts, categorys, maxPage, nowPage }) => {
   return (
     <>
       <Head>
-        <title>{`Category - ${nowCategory}`}</title>
+        <title>Cuzz&apos;s Log</title>
       </Head>
       <IntroHeader></IntroHeader>
-      <Categorys categorys={categorys} nowCategory={nowCategory}></Categorys>
+      <Categorys categorys={categorys} nowCategory="all"></Categorys>
       <section
         className={cls("mt-2 border-y border-dashed border-y-stone-400 divide-y-[1px] divide-dashed divide-stone-400")}
       >
-        {posts.map((elem, index) => (
+        {posts.map((elem) => (
           <PostCard key={elem.postInfo.uploadDate} {...elem} path={elem.id}></PostCard>
         ))}
       </section>
+      <PageNavigation nowPage={nowPage} maxPage={maxPage} baseLink={"/"}></PageNavigation>
     </>
   );
 };
 
 export async function getStaticPaths() {
-  const categorys = getCategorys();
-  const paths = categorys.map((category) => ({ params: { category: category.categoryName.toLowerCase() } }));
+  const pageEnd = Math.ceil(getPosts().length / 5);
+
+  const paths = [...Array(pageEnd).keys()].map((elem) => ({ params: { page: (elem + 1).toString() } }));
 
   return {
     paths,
@@ -44,14 +48,16 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: any }) {
   const posts = getPosts();
   const categorys = getCategorys();
+  const pageEnd = Math.ceil(posts.length / 5);
 
   return {
     props: {
       posts: posts
-        .filter((post) => post.postInfo.category.includes(params.category))
+        .slice((params.page - 1) * 5, params.page * 5)
         .map((post) => ({ postInfo: post.postInfo, id: post.id })),
       categorys,
-      nowCategory: params.category,
+      maxPage: pageEnd,
+      nowPage: parseInt(params.page),
     },
   };
 }

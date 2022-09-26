@@ -5,13 +5,16 @@ import cls from "src/utils/cls";
 import Categorys from "src/components/Index/Categorys";
 import Head from "next/head";
 import { Category, getCategorys, getPosts, PostElem } from "inbuild/getPostInfo";
+import Button from "src/components/common/Button";
+import PageNavigation from "src/components/Index/PageNavigation";
 
 interface HomePorps {
   posts: Pick<PostElem, "postInfo" | "id">[];
   categorys: Category[];
+  maxPage: number;
 }
 
-const Home: NextPage<HomePorps> = ({ posts, categorys }) => {
+const Home: NextPage<HomePorps> = ({ posts, categorys, maxPage }) => {
   return (
     <>
       <Head>
@@ -26,6 +29,7 @@ const Home: NextPage<HomePorps> = ({ posts, categorys }) => {
           <PostCard key={elem.postInfo.uploadDate} {...elem} path={elem.id}></PostCard>
         ))}
       </section>
+      <PageNavigation nowPage={1} maxPage={maxPage} baseLink="/" />
     </>
   );
 };
@@ -33,9 +37,14 @@ const Home: NextPage<HomePorps> = ({ posts, categorys }) => {
 export async function getStaticProps() {
   const posts = getPosts();
   const categorys = getCategorys();
+  const pageEnd = Math.ceil(posts.length / 5);
 
   return {
-    props: { posts: posts.map((elem) => ({ postInfo: elem.postInfo, id: elem.id })), categorys },
+    props: {
+      posts: posts.map((elem) => ({ postInfo: elem.postInfo, id: elem.id })).slice(0, 5),
+      categorys,
+      maxPage: pageEnd,
+    },
   };
 }
 
