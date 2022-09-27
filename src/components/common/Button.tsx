@@ -14,7 +14,7 @@ const Button = ({ children, link, type = "button", selected = false, className =
   return (
     <>
       {type === "button" && (
-        <Link href={link ? link : `/category/${children.toLowerCase()}`}>
+        <Link href={link ? link : `/category/${children.toLowerCase()}`} prefetch={false}>
           <a
             className={cls(
               "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
@@ -29,7 +29,7 @@ const Button = ({ children, link, type = "button", selected = false, className =
         </Link>
       )}
       {type === "string" && (
-        <Link href={`/category/${children.toLowerCase()}`}>
+        <Link href={`/category/${children.toLowerCase()}`} prefetch={false}>
           <a className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline", className)}>
             {"# " + children.toUpperCase()}
           </a>
