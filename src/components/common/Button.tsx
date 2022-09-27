@@ -8,13 +8,21 @@ interface CategoryButonProps {
   children: string;
   selected?: boolean;
   className?: string;
+  prefetch?: boolean;
 }
 
-const Button = ({ children, link, type = "button", selected = false, className = "" }: CategoryButonProps) => {
+const Button = ({
+  children,
+  link,
+  type = "button",
+  selected = false,
+  className = "",
+  prefetch = true,
+}: CategoryButonProps) => {
   return (
     <>
       {type === "button" && (
-        <Link href={link ? link : `/category/${children.toLowerCase()}`} prefetch={false}>
+        <Link href={link ? link : `/category/${children.toLowerCase()}`} prefetch={prefetch}>
           <a
             className={cls(
               "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
@@ -29,7 +37,7 @@ const Button = ({ children, link, type = "button", selected = false, className =
         </Link>
       )}
       {type === "string" && (
-        <Link href={`/category/${children.toLowerCase()}`} prefetch={false}>
+        <Link href={`/category/${children.toLowerCase()}`} prefetch={prefetch}>
           <a className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline", className)}>
             {"# " + children.toUpperCase()}
           </a>
