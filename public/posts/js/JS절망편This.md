@@ -1,7 +1,7 @@
 ---
 title: JS 절망편[1] this
 tags: ["JS"]
-uploadDate: 2022년 9월 21일
+uploadDate: 2022년 09월 21일
 description: JS 문법 공부에 어려운 부분을 차지하는 this를 정리해보았습니다. 추후 클로저 + EC도 설명할 예정입니다.
 ---
 
