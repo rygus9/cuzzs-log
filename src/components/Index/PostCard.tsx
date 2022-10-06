@@ -4,7 +4,7 @@ import cls from "src/utils/cls";
 import Button from "../common/Button";
 
 const PostCard = ({ postInfo, path }: Pick<PostElem, "postInfo"> & { path: number }) => (
-  <article className="h-48 flex justify-center flex-col">
+  <article className="min-h-[12rem] flex justify-center flex-col py-5">
     <Link href={"/post/" + path}>
       <h2
         className={cls(
