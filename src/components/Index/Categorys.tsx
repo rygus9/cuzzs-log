@@ -26,20 +26,20 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
                 ></ChevronUpIcon>
               </div>
             </Disclosure.Button>
-            <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md", "sm:px-4 sm:py-6")}>
-              <span className="mr-2 mt-2">
+            <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md flex flex-wrap", "sm:px-4 sm:py-6")}>
+              <div className="pr-2 pt-2">
                 <Button link="/" selected={nowCategory === "all"}>{`All`}</Button>
-              </span>
+              </div>
               {categorys.map((category) => {
                 return (
-                  <span key={category.categoryName} className="mr-2 mt-2">
+                  <div key={category.categoryName} className="pr-2 pt-2 w-fit h-fit">
                     <Button
                       link={"/category/" + category.categoryName.toLowerCase()}
                       selected={nowCategory === category.categoryName.toLowerCase()}
                     >
                       {category.categoryName}
                     </Button>
-                  </span>
+                  </div>
                 );
               })}
             </Disclosure.Panel>

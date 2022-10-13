@@ -23,7 +23,7 @@ const Button = ({
     <>
       {type === "button" && (
         <Link href={link ? link : `/category/${children.toLowerCase()}`} prefetch={prefetch}>
-          <a
+          <button
             className={cls(
               "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
               "border border-myOrange rounded-md bg-myBlack text-myWhite cursor-pointer",
@@ -32,15 +32,15 @@ const Button = ({
               className
             )}
           >
-            {"# " + children.toUpperCase()}
-          </a>
+            <a>{"# " + children.toUpperCase()}</a>
+          </button>
         </Link>
       )}
       {type === "string" && (
         <Link href={`/category/${children.toLowerCase()}`} prefetch={prefetch}>
-          <a className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline", className)}>
-            {"# " + children.toUpperCase()}
-          </a>
+          <button className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline", className)}>
+            <a>{"# " + children.toUpperCase()}</a>
+          </button>
         </Link>
       )}
     </>

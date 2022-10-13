@@ -10,6 +10,7 @@ class MyDocument extends Document {
     return (
       <Html className="bg-myBlack" lang="ko">
         <Head>
+          <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
           <meta charSet="utf-8"></meta>
           <meta property="og:title" content="Cuzz's Log"></meta>
           <meta property="og:type" content="website"></meta>
