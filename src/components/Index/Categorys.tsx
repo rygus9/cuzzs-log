@@ -17,22 +17,24 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
       <Disclosure>
         {({ open }) => (
           <>
-            <Disclosure.Button className="text-2xl text-myWhite font-bold flex items-center justify-between w-full">
-              <span className="uppercase text-myOrange text-xl">{nowCategory}</span>
-              <div className="flex items-center">
-                CATEGORY
-                <ChevronUpIcon
-                  className={cls("w-10 h-10 text-myOrange", open ? "" : "rotate-180 transform")}
-                ></ChevronUpIcon>
-              </div>
-            </Disclosure.Button>
+            <div className="flex items-center justify-between">
+              <span className="uppercase text-myOrange text-lg sm:text-xl">{nowCategory}</span>
+              <Disclosure.Button className="text-xl sm:text-2xl text-myWhite font-bold flex items-center justify-between w-fit">
+                <div className="flex items-center">
+                  CATEGORY
+                  <ChevronUpIcon
+                    className={cls("w-10 h-10 text-myOrange", open ? "" : "rotate-180 transform")}
+                  ></ChevronUpIcon>
+                </div>
+              </Disclosure.Button>
+            </div>
             <Disclosure.Panel className={cls("px-2 py-4 bg-myGray rounded-md flex flex-wrap", "sm:px-4 sm:py-6")}>
-              <div className="pr-2 pt-2">
+              <div className="pr-2 py-1">
                 <Button link="/" selected={nowCategory === "all"}>{`All`}</Button>
               </div>
               {categorys.map((category) => {
                 return (
-                  <div key={category.categoryName} className="pr-2 pt-2 w-fit h-fit">
+                  <div key={category.categoryName} className="pr-2 py-1 w-fit h-fit">
                     <Button
                       link={"/category/" + category.categoryName.toLowerCase()}
                       selected={nowCategory === category.categoryName.toLowerCase()}
