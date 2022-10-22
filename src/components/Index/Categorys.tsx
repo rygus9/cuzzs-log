@@ -1,7 +1,7 @@
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { Category } from "inbuild/getPostInfo";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import cls from "src/utils/cls";
 import Button from "../common/Button";
 
@@ -14,6 +14,23 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
   categorys.sort((a, b) => (a.categoryName < b.categoryName ? -1 : 1));
   const [panelOpen, setPanelOpen] = useState(false);
   const togglePanel = () => setPanelOpen((elem) => !elem);
+  const disclosureRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const { current } = disclosureRef;
+    if (current == null) return;
+
+    let beforeScrollHeight = 0;
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        let nowScrollHeight = entry.target.scrollHeight;
+        if (beforeScrollHeight != nowScrollHeight)
+          current.style.setProperty("--content-height", nowScrollHeight.toString() + "px"),
+            (beforeScrollHeight = nowScrollHeight);
+      }
+    });
+    observer.observe(current);
+  }, [disclosureRef]);
 
   return (
     <section className="mt-5">
@@ -36,31 +53,33 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
       </article>
       <section
         className={cls(
-          "px-2 bg-myGray rounded-md flex flex-wrap overflow-hidden transition-all duration-300",
-          "sm:px-4",
-          panelOpen ? "max-h-[200px] py-2 sm:py-4" : "max-h-0"
+          "bg-myGray rounded-md overflow-hidden transition-all duration-300",
+          panelOpen ? "max-h-[var(--content-height)]" : "max-h-0"
         )}
+        ref={disclosureRef}
       >
-        <div className="pr-2 py-1">
-          <Link href={"/"} passHref>
-            <a>
-              <Button selected={nowCategory === "all"}>{"# " + "All"}</Button>
-            </a>
-          </Link>
+        <div className="pl-4 pr-2 sm:px-4 flex flex-wrap py-2">
+          <div className="pr-2 py-1">
+            <Link href={"/"} passHref>
+              <a className="inline-block h-fit">
+                <Button selected={nowCategory === "all"}>{"# " + "All"}</Button>
+              </a>
+            </Link>
+          </div>
+          {categorys.map((category) => {
+            return (
+              <div key={category.categoryName} className="pr-2 py-1 w-fit h-fit">
+                <Link href={"/category/" + category.categoryName.toLowerCase()} passHref>
+                  <a className="inline-block h-fit">
+                    <Button selected={nowCategory === category.categoryName.toLowerCase()}>
+                      {"# " + category.categoryName.toUpperCase()}
+                    </Button>
+                  </a>
+                </Link>
+              </div>
+            );
+          })}
         </div>
-        {categorys.map((category) => {
-          return (
-            <div key={category.categoryName} className="pr-2 py-1 w-fit h-fit">
-              <Link href={"/category/" + category.categoryName.toLowerCase()} passHref>
-                <a>
-                  <Button selected={nowCategory === category.categoryName.toLowerCase()}>
-                    {"# " + category.categoryName.toUpperCase()}
-                  </Button>
-                </a>
-              </Link>
-            </div>
-          );
-        })}
       </section>
     </section>
   );
