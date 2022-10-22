@@ -16,7 +16,7 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
   const togglePanel = () => setPanelOpen((elem) => !elem);
 
   return (
-    <section className="mt-10">
+    <section className="mt-5">
       <article className="flex items-center justify-between">
         <span className="uppercase text-myOrange text-lg sm:text-xl font-semibold">{nowCategory}</span>
         <button

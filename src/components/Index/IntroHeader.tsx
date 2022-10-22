@@ -1,16 +1,12 @@
 import cls from "src/utils/cls";
 
-const IntroHeader = () => (
-  <header className={cls("pt-8 flex items-center space-x-6", "sm:pt-12", "md:pt-16")}>
-    <div className={cls("w-20 h-20 rounded-full", "sm:w-24 sm:h-24", "md:w-32 md:h-32")}>
-      <img src="/image/고양이w500.webp" alt="이미지 하나" className="rounded-full w-full h-full"></img>
-    </div>
-    <div className="flex flex-col">
-      <span className={cls("block text-xl text-stone-400", "md:text-2xl")}>
-        <span className={cls("text-3xl font-bold", "md:text-4xl")}>Cuzz </span>&apos;s Log
-      </span>
-      <span className={cls("block mt-1 text-xl text-gray-200", "md:mt-2")}>기술 블로그 겸 일기장</span>
-    </div>
+interface IntroHeaderProps {
+  category?: string;
+}
+
+const IntroHeader = ({ category = "All" }: IntroHeaderProps) => (
+  <header className={cls("pt-6 flex items-center", "sm:pt-10", "md:pt-12")}>
+    <h3 className="text-5xl font-bold tracking-wider uppercase">{category}</h3>
   </header>
 );
 

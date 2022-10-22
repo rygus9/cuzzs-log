@@ -21,7 +21,7 @@ const PostList: NextPage<PostListProps> = ({ posts, categorys, maxPage, nowPage,
       <Head>
         <title>Cuzz&apos;s Log</title>
       </Head>
-      <IntroHeader></IntroHeader>
+      <IntroHeader category={nowCategory}></IntroHeader>
       <Categorys categorys={categorys} nowCategory={nowCategory}></Categorys>
       <section
         className={cls("mt-2 border-y border-dashed border-y-stone-400 divide-y-[1px] divide-dashed divide-stone-400")}
