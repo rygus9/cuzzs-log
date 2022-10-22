@@ -1,5 +1,6 @@
 import cls from "src/utils/cls";
 import Button from "../common/Button";
+import TextLink from "../common/TextLink";
 
 interface PostHeaderProps {
   title: string;
@@ -19,9 +20,6 @@ const PostHeader = ({ title, category }: PostHeaderProps) => {
       >
         {title}
       </h2>
-      <div className="mt-2">
-        <Button key={category}>{category}</Button>
-      </div>
     </>
   );
 };

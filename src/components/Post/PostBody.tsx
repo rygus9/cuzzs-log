@@ -7,7 +7,6 @@ import rehypeRaw from "rehype-raw";
 import cls from "src/utils/cls";
 //@ts-ignore
 import urls from "rehype-urls";
-import Image from "next/image";
 import getImageLocation from "src/utils/getSrcset";
 import OptImage from "../common/OptImage";
 

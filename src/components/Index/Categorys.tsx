@@ -1,6 +1,6 @@
-import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { Category } from "inbuild/getPostInfo";
+import Link from "next/link";
 import { useState } from "react";
 import cls from "src/utils/cls";
 import Button from "../common/Button";
@@ -42,17 +42,22 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
         )}
       >
         <div className="pr-2 py-1">
-          <Button link="/" selected={nowCategory === "all"}>{`All`}</Button>
+          <Link href={"/"} passHref>
+            <a>
+              <Button selected={nowCategory === "all"}>{"# " + "All"}</Button>
+            </a>
+          </Link>
         </div>
         {categorys.map((category) => {
           return (
             <div key={category.categoryName} className="pr-2 py-1 w-fit h-fit">
-              <Button
-                link={"/category/" + category.categoryName.toLowerCase()}
-                selected={nowCategory === category.categoryName.toLowerCase()}
-              >
-                {category.categoryName}
-              </Button>
+              <Link href={"/category/" + category.categoryName.toLowerCase()} passHref>
+                <a>
+                  <Button selected={nowCategory === category.categoryName.toLowerCase()}>
+                    {"# " + category.categoryName.toUpperCase()}
+                  </Button>
+                </a>
+              </Link>
             </div>
           );
         })}

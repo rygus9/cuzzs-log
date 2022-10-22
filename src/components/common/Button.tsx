@@ -1,49 +1,23 @@
-import Link from "next/link";
 import cls from "src/utils/cls";
 
 interface CategoryButonProps {
-  size?: "sm" | "base";
-  type?: "string" | "button";
-  link?: string;
-  children: string;
+  children: string | JSX.Element;
   selected?: boolean;
-  className?: string;
-  prefetch?: boolean;
+  onClick?: (e: any) => {};
 }
 
-const Button = ({
-  children,
-  link,
-  type = "button",
-  selected = false,
-  className = "",
-  prefetch = true,
-}: CategoryButonProps) => {
+const Button = ({ children, selected = false, onClick }: CategoryButonProps) => {
   return (
-    <>
-      {type === "button" && (
-        <Link href={link ? link : `/category/${children.toLowerCase()}`} prefetch={prefetch}>
-          <button
-            className={cls(
-              "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
-              "border border-myOrange rounded-md bg-myBlack text-myWhite cursor-pointer",
-              selected && "ring-1 ring-myOrange",
-              "hover:ring-1 hover:ring-myOrange",
-              className
-            )}
-          >
-            <a>{"# " + children.toUpperCase()}</a>
-          </button>
-        </Link>
+    <button
+      className={cls(
+        "py-1.5 px-2.5 text-xs sm:py-2 sm:px-3 sm:text-sm",
+        "border border-myOrange rounded-md bg-myBlack text-myWhite cursor-pointer duration-150",
+        selected ? "ring-1 ring-myOrange font-bold" : "hover:ring-1 hover:ring-myOrange hover:scale-105"
       )}
-      {type === "string" && (
-        <Link href={`/category/${children.toLowerCase()}`} prefetch={prefetch}>
-          <button className={cls("text-sm", "bg-myBlack text-myOrange cursor-pointer", "hover:underline", className)}>
-            <a>{"# " + children.toUpperCase()}</a>
-          </button>
-        </Link>
-      )}
-    </>
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 };
 
