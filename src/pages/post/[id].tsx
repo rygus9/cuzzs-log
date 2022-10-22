@@ -3,6 +3,7 @@ import PostBody from "src/components/Post/PostBody";
 import PostFooter from "src/components/Post/PostFooter";
 import Head from "next/head";
 import { getPostContent, getPosts, PostInfo } from "inbuild/getPostInfo";
+import Utterances from "src/components/Post/Utterances";
 
 interface PostProps {
   postInfo: PostInfo;
@@ -20,6 +21,7 @@ const Post = ({ postInfo, postContent }: PostProps) => {
       </header>
       <PostBody>{postContent}</PostBody>
       <PostFooter uploadDate={postInfo.uploadDate}></PostFooter>
+      <Utterances></Utterances>
     </>
   );
 };
