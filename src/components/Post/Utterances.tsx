@@ -14,6 +14,7 @@ const Utterances = () => (
       scriptElem.crossOrigin = "anonymous";
       elem.appendChild(scriptElem);
     }}
+    className="pt-6 sm:pt-10"
   ></section>
 );
 

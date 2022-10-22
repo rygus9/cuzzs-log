@@ -4,7 +4,7 @@ interface PostFooterProps {
 
 const PostFooter = ({ uploadDate }: PostFooterProps) => {
   return (
-    <div className="mt-16 bg-myGray py-4 px-3 rounded-md sm:mt-20">
+    <div className="mt-10 bg-myGray py-4 px-3 rounded-md sm:mt-12 lg:mt-14">
       <span className="text-xl font-bold mr-4 sm:text-2xl">
         By <span className="text-myOrange">Cuzz</span>
       </span>
