@@ -1,9 +1,9 @@
 const colors = {
-  myBlack: "#101010",
+  myBlack: "#202020",
   myOrange: "#f2aa4c",
   myWhite: "#dedede",
-  myLightStone: "#dad7d4",
-  myGray: "#2b2b2b",
+  myLightStone: "#d1d5db",
+  myGray: "#3b3b3b",
 };
 
 module.exports = {

@@ -1,8 +1,8 @@
 import "styles/globals.css";
 import type { AppProps } from "next/app";
-import Header from "src/layout/Header";
 import cls from "src/utils/cls";
 import Footer from "src/layout/Footer";
+import Header from "src/layout/Header";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
