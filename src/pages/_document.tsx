@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html className="bg-myBlack" lang="ko">
+      <Html className="bg-myBlack" lang="ko" style={{ scrollBehavior: "smooth" }}>
         <Head>
           <meta charSet="utf-8"></meta>
           <meta property="og:title" content="Cuzz's Log"></meta>
