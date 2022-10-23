@@ -22,9 +22,7 @@ const PostList: NextPage<PostListProps> = ({ posts, categorys, maxPage, nowPage 
       </Head>
       <IntroHeader></IntroHeader>
       <Categorys categorys={categorys} nowCategory="all"></Categorys>
-      <section
-        className={cls("mt-2 border-y border-dashed border-y-stone-400 divide-y-[1px] divide-dashed divide-stone-400")}
-      >
+      <section className={cls("mt-2 border-y border-t-stone-400 border-b-stone-600 divide-y-[1px] divide-stone-600")}>
         {posts.map((elem) => (
           <PostCard key={elem.postInfo.uploadDate} {...elem} path={elem.id}></PostCard>
         ))}

@@ -34,23 +34,20 @@ const Categorys = ({ categorys, nowCategory }: CategorysProps) => {
 
   return (
     <section className="mt-5">
-      <article className="flex items-center justify-between">
-        <span className="uppercase text-myOrange text-lg sm:text-xl font-semibold">{nowCategory}</span>
-        <button
-          className="text-xl sm:text-2xl text-myWhite font-bold flex items-center justify-between w-fit"
-          onClick={togglePanel}
-        >
-          <div className="flex items-center">
-            CATEGORY
-            <ChevronUpIcon
-              className={cls(
-                "w-10 h-10 text-myOrange transition-transform duration-300 ease-out",
-                panelOpen ? "" : "rotate-180"
-              )}
-            ></ChevronUpIcon>
-          </div>
-        </button>
-      </article>
+      <button
+        className="ml-auto text-xl sm:text-2xl text-myWhite font-bold flex items-center justify-between w-fit"
+        onClick={togglePanel}
+      >
+        <div className="flex items-center">
+          CATEGORY
+          <ChevronUpIcon
+            className={cls(
+              "w-10 h-10 text-myOrange transition-transform duration-300 ease-out",
+              panelOpen ? "" : "rotate-180"
+            )}
+          ></ChevronUpIcon>
+        </div>
+      </button>
       <section
         className={cls(
           "bg-myGray rounded-md overflow-hidden transition-all duration-300",
