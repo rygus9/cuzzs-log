@@ -5,7 +5,6 @@ import cls from "src/utils/cls";
 import Categorys from "src/components/Index/Categorys";
 import Head from "next/head";
 import { Category, getCategorys, getPosts, PostElem } from "inbuild/getPostInfo";
-import Button from "src/components/common/Button";
 import PageNavigation from "src/components/Index/PageNavigation";
 
 interface HomePorps {

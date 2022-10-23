@@ -5,9 +5,18 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const Logo = () => (
   <Link href="/">
-    <a className={cls("text-2xl font-bold cursor-pointer tracking-wide", "sm:text-3xl", "hover:animate-pulseFast")}>
-      <strong className="text-myOrange">Cuzz</strong>
-      {"'"}s LOG
+    <a
+      className={cls(
+        "block text-2xl font-bold cursor-pointer tracking-wide h-full",
+        "md:text-3xl",
+        "hover:animate-pulseFast"
+      )}
+    >
+      <div className="flex justify-center items-center h-full">
+        <img src="/image/common/MyLogo.png" width="35" className="mr-3 inline-block"></img>
+        <strong className="text-myOrange inline-block">Cuzz</strong>
+        <span className="inline-block">{"'"}s LOG</span>
+      </div>
     </a>
   </Link>
 );

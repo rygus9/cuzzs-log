@@ -1,8 +1,8 @@
 const colors = {
-  myBlack: "#202020",
+  myBlack: "#1e1e1e",
   myOrange: "#f2aa4c",
   myWhite: "#ececec",
-  myLightStone: "#d1d5db",
+  myLightStone: "#d1d1d1",
   myGray: "#3b3b3b",
 };
 
@@ -122,6 +122,19 @@ module.exports = {
               paddingRight: "0px !important",
               paddingBottom: "5px !important",
               paddingTop: "5px !important",
+            },
+            ul: {
+              paddingLeft: "1em !important",
+              listStyleType: "none",
+            },
+            li: {
+              position: "relative",
+            },
+            "li::before": {
+              content: "'▶︎'",
+              position: "absolute",
+              left: "-13px",
+              color: colors.myOrange,
             },
           },
         },
