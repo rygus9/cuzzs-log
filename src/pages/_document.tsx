@@ -28,13 +28,14 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff"></meta>
+
           {/* SEO */}
-          <meta charSet="utf-8"></meta>
-          <meta property="og:title" content="Cuzz's Log"></meta>
-          <meta property="og:type" content="website"></meta>
-          <meta property="og:description" content="Cuzz's의 기술 블로그 겸 일기장"></meta>
-          <meta name="description" content="Cuzz's의 기술 블로그 겸 일기장" />
-          <meta name="keywords" content="Cuzz, Programming, FrontEnd" />
+          <meta name="keywords" content="Cuzz, cuzzlog, Programming, FrontEnd" />
+          <meta name="application-name" content="cuzzlog" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="msapplication-tap-highlight" content="no"></meta>
         </Head>
         <body>
           <Main />

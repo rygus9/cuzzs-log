@@ -6,6 +6,7 @@ import PostCard from "src/components/Index/PostCard";
 import Categorys from "src/components/Index/Categorys";
 import cls from "src/utils/cls";
 import PageNavigation from "src/components/Index/PageNavigation";
+import { PageSeo } from "src/components/SEO";
 
 interface PostListProps {
   posts: Pick<PostElem, "postInfo" | "id">[];
@@ -17,9 +18,11 @@ interface PostListProps {
 const PostList: NextPage<PostListProps> = ({ posts, categorys, nowCategory, maxPage }) => {
   return (
     <>
-      <Head>
-        <title>{`Category - ${nowCategory}`}</title>
-      </Head>
+      <PageSeo
+        title={`${nowCategory}`}
+        description={`${nowCategory}'s Posts`}
+        url={`/category/${nowCategory}`}
+      ></PageSeo>
       <IntroHeader category={nowCategory}></IntroHeader>
       <Categorys categorys={categorys} nowCategory={nowCategory}></Categorys>
       <section className={cls("mt-2 border-y border-t-stone-400 border-b-stone-600 divide-y-[1px] divide-stone-600")}>

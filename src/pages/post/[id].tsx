@@ -4,6 +4,7 @@ import PostFooter from "src/components/Post/PostFooter";
 import Head from "next/head";
 import { getPostContent, getPosts, PostInfo } from "inbuild/getPostInfo";
 import Utterances from "src/components/Post/Utterances";
+import { BlogSeo } from "src/components/SEO";
 
 interface PostProps {
   postInfo: PostInfo;
@@ -11,11 +12,19 @@ interface PostProps {
 }
 
 const Post = ({ postInfo, postContent }: PostProps) => {
+  const filteredDate = postInfo.uploadDate
+    .replaceAll(" ", "")
+    .replaceAll(/[^0-9 ]/g, "-")
+    .replace(/.$/, "");
   return (
     <>
-      <Head>
-        <title>{postInfo.title}</title>
-      </Head>
+      <BlogSeo
+        title={postInfo.title}
+        date={filteredDate}
+        summary={postInfo.description}
+        tags={[postInfo.category]}
+        url=""
+      ></BlogSeo>
       <header className="pb-4 text-stone-300">
         <PostHeader title={postInfo.title} category={postInfo.category} />
       </header>

@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import Head from "next/head";
+import { PageSeo } from "src/components/SEO";
 
 const About = () => {
   return (
     <>
-      <Head>
-        <title>Cuzz&apos;s Log - About</title>
-      </Head>
+      <PageSeo title={"About me"} description="About me - Cuzz" url="/about"></PageSeo>
       <motion.div
         animate={{
           opacity: [0, 1],
