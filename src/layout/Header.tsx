@@ -1,7 +1,7 @@
 import Link from "next/link";
 import cls from "src/utils/cls";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Logo = () => (
   <Link href="/">
@@ -15,7 +15,7 @@ const Logo = () => (
       <div className="flex justify-center items-center h-full">
         <img src="/image/common/MyLogo.png" width="35" className="mr-3 inline-block"></img>
         <strong className="text-myOrange inline-block">Cuzz</strong>
-        <span className="inline-block">&nbsp;LOG</span>
+        <span className="inline-block">{"'s "}LOG</span>
       </div>
     </a>
   </Link>
