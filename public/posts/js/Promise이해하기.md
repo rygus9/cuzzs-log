@@ -94,20 +94,21 @@ setTimeout(() => {
 
 🍀 Promise가 fulfilled나 rejected 될 때 실행시킬 코드를 등록하는 방법이 then과 catch입니다.
 
-then과 catch는 Promise가 fulfilled 되거나 rejected 될 때 실행돼야 하는 함수를 쉽게 등록할 수 있게 해주는 prototype method입니다. pending 상태의 Promise는 나중에 fulfilled나 rejected 될 때 실행되며 이미 fulfilled나 rejected 된 Promise에 실행시키면 바로 실행됩니다.
+then과 catch는 Promise가 fulfilled 되거나 rejected 될 때 실행돼야 하는 함수를 쉽게 등록할 수 있게 해주는 prototype method입니다. pending 상태의 Promise에 then 또는 catch를 호출해 함수를 등록한다면 나중에 fulfilled나 rejected 될 때 실행되며 이미 fulfilled나 rejected 된 Promise에 then 또는 catch에 함수를 등록하면 바로 실행됩니다.
 
 
 #### ✓ then의 동작 원리
 
-then 또는 catch가 실행되면 이 아이들은 새로운 Promise를 리턴한다. Promise에 등록한 함수가 microTaskQueue에 올라가는 것처럼 then에 있는 코드들도 microTaskQueue에 올라가게 됩니다. Promise에 then 메서드가 실행되면 리턴값으로 새로운 Promise가 반환됩니다. 다만 Promise에 올라가는 function과 then에 등록되는 function은 약간 다른 구조로 되어 있습니다.
+then 또는 catch가 실행되면 이 아이들은 새로운 Promise를 리턴한다. then에 있는 코드들은 해당 함수를 호출한 Promise가 fulfilled상태가 될 경우 microTaskQueue에 올라가게 됩니다. Promise에 then 메서드가 실행되면 리턴값으로 새로운 Promise가 반환됩니다. 다만 Promise에 등록하는 function과 then에 등록되는 function은 다른 구조로 되어 있습니다.
 
 |                           Promise                            |                             Then                             |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|       함수를 등록한 시점에 바로 microTaskQueue에 등록        | 해당 함수를 호출한 Promise가 fulfilled가 될 때 microTaskQueue에 등록(이때 새 Promise 생성) |
+| Promise를 생성할 때 등록한 함수는 보통 함수처럼 실행. (**microTaskQueue를 거치지 않음**) | 해당 함수를 호출한 Promise가 fulfilled가 될 때 microTaskQueue에 인자 함수 등록(이때 새 Promise 생성) |
 | resolve가 호출되면 fulfilled 로 변함, resolve이후 코드들이 끝까지 실행된다. | return문이 호출되면 fulfilled로 변함. return 이후 코드들은 실행되지 않음. |
 | 등록되는 함수에 매개변수로 resolve와 reject함수가 주입됩니다. | 등록되는 함수의 매개변수로 Promise가 resolve를 실행할 때 넣은 값이 매개변수로 주입됩니다. |
 
-> then에 등록된 함수의 리턴 값으로 Promise가 되는 경우가 있습니다. 이때 then이 반환한 Promise의 result는 리턴한 Promise 객체 그대로가 아니라 해당 Promise가 fulfilled가 된 이후 나온 result값이 됩니다. 다음 챕터에서 Promise chain을 설명할 때 then에 등록된 메서드가 Promise를 리턴해도 그다음 연결된 then에 등록된 함수에 Promise값이 들어오지 않는 이유입니다.
+> **then의 리턴 값** 또는 Promise 등록 함수 안에 **resolve에 들어가는 값**에 Promise를 주입한다면 알아서 해당 프로미스가 fulfilled될 때까지 기다린 후 해당 Promise의 result값을 then에 등록된 함수에게 넘긴다.
+
 ```js
 (new Promise((res) => {
   res(1); console.log("in Promise done")
@@ -134,7 +135,7 @@ myPromise.then((res) => res + 1)
 <img src="/Users/cuzz/Documents/project-github/cuzzs-log/public/posts/js/image/Promise1_2.png" alt="Promise1_2" width="800" height="280" />
 
 
-#### ✓ then, catch, finally
+#### ✓ catch, finally
 
 catch와 finally 모두 then과 비슷하게 입력받은 함수를 기반으로 새로운 Promise를 리턴합니다. catch같은 경우에는 Promise가 rejected 일 경우에만 반응하는 메서드이고 finally는 fulfilled이든 rejected이든 settled된 Promise라면 무조건 실행되는 메서드입니다. catch같은 경우에는 Promise가 에러가 난 경우에도 반응하며 보통 Promise chain이 진행되면서 생긴 에러를 잡기 위해서 사용합니다. finally은 rejected나 fulfilled 여부와 상관없이 실행되어야 하는 동작이 있을 경우 사용합니다.
 
@@ -155,12 +156,12 @@ new Promise((res, rej) => {
 
 🍀 Promise 등록 함수는 micro TaskQueue에 들어간 이후 처리됩니다.
 
-Promise에 등록한 함수가 정확히 언제 실행되는지 파악하려면  JS EventLoop 방식이 어떻게 동작하는지 알아야 합니다. 이 부분을 제 블로그에서 소개하면 좋겠지만 움짤로 정말 잘 정리한 블로그가 있어서 해당 블로그의 링크를 남겨둡니다. 핵심만 간단하게 요약하겠습니다.
+Promise chain이 어떻게 동작하는지 이해하려면 JS EventLoop 방식이 어떻게 동작하는지 알아야 합니다. 이 부분을 제 블로그에서 소개하면 좋겠지만 움짤로 정말 잘 정리한 블로그가 있어서 해당 블로그의 링크를 남겨둡니다. 핵심만 간단하게 요약하겠습니다.
 https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke#syntax
 
 ★ 맨 처음 JS 파일을 실행시키면서 생긴 콜스택을 다 해치우고 나면 그 이후 macroTaskQueue와 microTaskQueue에 있는 작업을 실행합니다.
 ★ 두 개의 큐에 동시에 Task가 존재하면 microTaskQueue에 있는 내용 먼저 실행하고 그 이후 macroTaskQueue에 있는 내용을 실행합니다.
-★ TaskQueue에 들어가는 내용은 **Promise 생성 시 입력한 함수** 또는 **비동기 함수의 콜백 함수**입니다.
+★ TaskQueue에 들어가는 내용은  또는 **비동기 함수의 콜백 함수**입니다.
 
 > 사실 microTaskQueue와 macroTaskQueue말고 AnimationFrames라는 큐가 하나 더 있습니다. 해당 큐는 requestAnimationFrame의 작업이 등록되는 큐로 microTaskQueue보다는 우선 순위가 낮고 macroTaskQueue보다는 우선 순위가 높습니다.
 
@@ -174,7 +175,7 @@ new Promise(() => {
 })
 ```
 
-위의 코드에서 catch 안에 있는 코드는 실행되지 않는다. 왜냐하면 에러가 발생한 부분은 setTimeout의 콜백 함수이고 해당 함수는 macroTaskQueue에서 콜스택으로 옮겨져 Promise의 제어를 받지 않는 상태이기 때문에 Promise의 catch문에도 오지 않는다. microTaskQueue와 macroTaskQueue를 제대로 이해한다면 catch가 걸리지 않음을 이해할 수 있다.
+위의 코드에서 catch 안에 있는 코드는 실행되지 않는다. 왜냐하면 에러가 발생한 부분은 setTimeout의 콜백 함수이고 해당 함수는 macroTaskQueue에서 콜스택으로 옮겨져 Promise의 제어를 받지 않는 상태이기 때문에 Promise의 catch문에도 오지 않는다. microTaskQueue와 macroTaskQueue를 제대로 이해한다면 catch가 걸리지 않음을 이해할 수 있다. 이를 위해 Promise 등록 함수에 reject 함수를 주입받는다.
 
 
 
@@ -182,7 +183,10 @@ new Promise(() => {
 
 #### ✓ Promise Prototype Method
 
-Promise Prototype에는 위에서 설명한 then, catch, finally가 존재합니다. 위에서 설명한 내용과 중복되니 여기서는 생략하도록 하겠습니다.
+Promise Prototype에는 위에서 설명한 then, catch, finally가 존재합니다. 위에서 자세하게 설명했으니 대부분의 설명은 생략하겠습니다.
+
+**♌︎ then이 없다면**
+Promise에 등록된 함수는 그냥 함수처럼 실행된다. Promise를 어떻게 사용하든 then을 쓰지 않는다면 Promise의 상태에 맞춰 실행시킬 함수를 등록할 방법이 없다. Promise에 등록한 함수는 자신이 등록된 Promise의 상태를 바꿀 수 있는 수단이 있을 뿐 **그냥 함수처럼 바로 콜스택에 올라간다는 것**을 기억하자.
 
 
 
