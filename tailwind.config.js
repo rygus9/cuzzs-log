@@ -69,10 +69,6 @@ module.exports = {
               content: '"# "',
               color: colors.myOrange,
             },
-            "h4,h5,h6::before": {
-              content: '"# "',
-              color: colors.myWhite,
-            },
             "h4,h5,h6": {
               color: colors.myWhite,
             },
