@@ -4,7 +4,7 @@ const dirPath = path.dirname(__filename);
 const fs = require("fs");
 
 const getImagePaths = () => {
-  const postsRoot = path.resolve(dirPath, "../public/posts");
+  const postsRoot = path.resolve(dirPath, "../posts");
   const images = [];
 
   const stack = [];

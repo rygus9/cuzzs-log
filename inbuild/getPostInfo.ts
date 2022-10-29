@@ -1,7 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 
-const postsRoot = "public/posts";
+const postsRoot = "posts";
 
 export interface Category {
   categoryName: string;

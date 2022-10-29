@@ -1,5 +1,5 @@
 ---
-title: JS 절망편[1] this
+title: this 사용하기
 tags: ["JS"]
 uploadDate: 2022년 09월 21일
 description: JS 문법 공부에 어려운 부분을 차지하는 this를 정리해보았습니다.
