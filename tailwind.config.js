@@ -126,7 +126,7 @@ module.exports = {
             li: {
               position: "relative",
             },
-            "li::before": {
+            "ul>li::before": {
               content: "'▶︎'",
               position: "absolute",
               left: "-13px",
