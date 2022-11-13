@@ -13,7 +13,7 @@ const Logo = () => (
       )}
     >
       <div className="flex justify-center items-center h-full">
-        <img src="/image/common/MyLogo.png" width="35" className="mr-3 inline-block"></img>
+        <img src="/image/common/MyLogo.png" alt="Cuzz's Log 로고" width="35" className="mr-3 inline-block"></img>
         <strong className="text-myOrange inline-block">Cuzz</strong>
         <span className="inline-block">{"'s "}LOG</span>
       </div>

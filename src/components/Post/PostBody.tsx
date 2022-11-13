@@ -1,6 +1,8 @@
-import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
 import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
+import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
+import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
+import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -11,6 +13,8 @@ import getImageLocation from "src/utils/getSrcset";
 import OptImage from "../common/OptImage";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
+SyntaxHighlighter.registerLanguage("bash", bash);
+SyntaxHighlighter.registerLanguage("json", json);
 
 const PostBody = ({ children }: { children: string }) => {
   return (
@@ -55,10 +59,11 @@ function preRenderer(props: any) {
   if (props.children[0]?.type !== "code") {
     return <pre>{props.children}</pre>;
   }
+  const laguage = props.children[0]?.props.className.split("-")[1];
 
   // tsx로 다 퉁치려고 합니다. JS 외에 언어를 쓰실 시 알아서 등록하세요~
   return (
-    <SyntaxHighlighter language="tsx" style={darcula}>
+    <SyntaxHighlighter language={laguage} style={darcula}>
       {props.children[0].props.children[0]}
     </SyntaxHighlighter>
   );

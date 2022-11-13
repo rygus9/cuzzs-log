@@ -13,16 +13,14 @@ interface OptImageProps {
 
 const OptImage = (props: OptImageProps) => {
   const [loading, setLoading] = useState(true);
+  console.log(loading);
 
   return (
     <figure
-      className={cls(
-        "relative my-[1.7777778em] mx-auto text-lg sm:text-xl w-full",
-        loading ? "border border-myOrange" : "border-none"
-      )}
+      className={cls("relative my-[1.7777778em] mx-auto text-lg sm:text-xl w-full rounded-lg overflow-hidden")}
       style={{ aspectRatio: `${props.width} / ${props.height}` }}
     >
-      {loading && <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Loading Image...</span>}
+      <div className="absolute -z-10 w-full h-full bg-stone-400"></div>
       <img
         {...props}
         onLoad={() => setLoading(false)}

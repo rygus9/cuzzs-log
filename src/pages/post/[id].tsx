@@ -1,7 +1,6 @@
 import PostHeader from "src/components/Post/PostHeader";
 import PostBody from "src/components/Post/PostBody";
 import PostFooter from "src/components/Post/PostFooter";
-import Head from "next/head";
 import { getPostContent, getPosts, PostInfo } from "inbuild/getPostInfo";
 import Utterances from "src/components/Post/Utterances";
 import { BlogSeo } from "src/components/SEO";
