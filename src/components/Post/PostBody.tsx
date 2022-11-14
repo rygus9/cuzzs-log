@@ -1,8 +1,5 @@
-import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-async-light";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-async";
 import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
-import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
-import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -11,10 +8,6 @@ import cls from "src/utils/cls";
 import urls from "rehype-urls";
 import getImageLocation from "src/utils/getSrcset";
 import OptImage from "../common/OptImage";
-
-SyntaxHighlighter.registerLanguage("tsx", tsx);
-SyntaxHighlighter.registerLanguage("bash", bash);
-SyntaxHighlighter.registerLanguage("json", json);
 
 const PostBody = ({ children }: { children: string }) => {
   return (
