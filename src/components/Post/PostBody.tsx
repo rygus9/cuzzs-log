@@ -1,4 +1,4 @@
-import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-async-light";
 import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
