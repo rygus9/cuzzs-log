@@ -43,6 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:842a97dc90f25486291c817569fca8a29b32e6a62d5773f08cc4d9ff3aeea1cc9aac98a528e3a3706c4d732d6d03c3df3a1380226f4591e1c1bce02203dc2736#npm:12.2.0"],\
             ["next-seo", "virtual:842a97dc90f25486291c817569fca8a29b32e6a62d5773f08cc4d9ff3aeea1cc9aac98a528e3a3706c4d732d6d03c3df3a1380226f4591e1c1bce02203dc2736#npm:5.14.0"],\
+            ["next-transpile-modules", "npm:10.0.0"],\
             ["postcss", "npm:8.4.18"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:842a97dc90f25486291c817569fca8a29b32e6a62d5773f08cc4d9ff3aeea1cc9aac98a528e3a3706c4d732d6d03c3df3a1380226f4591e1c1bce02203dc2736#npm:18.2.0"],\
@@ -1490,6 +1491,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gray-matter", "npm:4.0.3"],\
             ["next", "virtual:842a97dc90f25486291c817569fca8a29b32e6a62d5773f08cc4d9ff3aeea1cc9aac98a528e3a3706c4d732d6d03c3df3a1380226f4591e1c1bce02203dc2736#npm:12.2.0"],\
             ["next-seo", "virtual:842a97dc90f25486291c817569fca8a29b32e6a62d5773f08cc4d9ff3aeea1cc9aac98a528e3a3706c4d732d6d03c3df3a1380226f4591e1c1bce02203dc2736#npm:5.14.0"],\
+            ["next-transpile-modules", "npm:10.0.0"],\
             ["postcss", "npm:8.4.18"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:842a97dc90f25486291c817569fca8a29b32e6a62d5773f08cc4d9ff3aeea1cc9aac98a528e3a3706c4d732d6d03c3df3a1380226f4591e1c1bce02203dc2736#npm:18.2.0"],\
@@ -1791,6 +1793,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["end-of-stream", "npm:1.4.4"],\
             ["once", "npm:1.4.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["enhanced-resolve", [\
+        ["npm:5.10.0", {\
+          "packageLocation": "./.yarn/cache/enhanced-resolve-npm-5.10.0-7941304306-0bb9830704.zip/node_modules/enhanced-resolve/",\
+          "packageDependencies": [\
+            ["enhanced-resolve", "npm:5.10.0"],\
+            ["graceful-fs", "npm:4.2.10"],\
+            ["tapable", "npm:2.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4454,6 +4467,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["next-transpile-modules", [\
+        ["npm:10.0.0", {\
+          "packageLocation": "./.yarn/cache/next-transpile-modules-npm-10.0.0-35632e5048-3300fc7081.zip/node_modules/next-transpile-modules/",\
+          "packageDependencies": [\
+            ["next-transpile-modules", "npm:10.0.0"],\
+            ["enhanced-resolve", "npm:5.10.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["node-abi", [\
         ["npm:3.28.0", {\
           "packageLocation": "./.yarn/cache/node-abi-npm-3.28.0-7291733a57-ed8db5e58f.zip/node_modules/node-abi/",\
@@ -5941,6 +5964,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/postcss",\
             "postcss"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["tapable", [\
+        ["npm:2.2.1", {\
+          "packageLocation": "./.yarn/cache/tapable-npm-2.2.1-8cf5ff3039-3b7a1b4d86.zip/node_modules/tapable/",\
+          "packageDependencies": [\
+            ["tapable", "npm:2.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\

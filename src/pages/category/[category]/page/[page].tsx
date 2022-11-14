@@ -1,6 +1,5 @@
 import { Category, getCategorys, getPosts, PostElem } from "inbuild/getPostInfo";
 import { NextPage } from "next";
-import Head from "next/head";
 import IntroHeader from "src/components/Index/IntroHeader";
 import PostCard from "src/components/Index/PostCard";
 import Categorys from "src/components/Index/Categorys";

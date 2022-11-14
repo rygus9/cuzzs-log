@@ -1,5 +1,11 @@
-import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-async";
-import darcula from "react-syntax-highlighter/dist/cjs/styles/prism/darcula";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-async-light";
+import darcula from "react-syntax-highlighter/dist/esm/styles/prism/darcula";
+import tsx from "react-syntax-highlighter/dist/esm/languages/prism/tsx";
+import js from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
+import bash from "react-syntax-highlighter/dist/esm/languages/prism/bash";
+import css from "react-syntax-highlighter/dist/esm/languages/prism/css";
+import json from "react-syntax-highlighter/dist/esm/languages/prism/json";
+import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -8,6 +14,13 @@ import cls from "src/utils/cls";
 import urls from "rehype-urls";
 import getImageLocation from "src/utils/getSrcset";
 import OptImage from "../common/OptImage";
+
+SyntaxHighlighter.registerLanguage("js", js);
+SyntaxHighlighter.registerLanguage("tsx", tsx);
+SyntaxHighlighter.registerLanguage("bash", bash);
+SyntaxHighlighter.registerLanguage("css", css);
+SyntaxHighlighter.registerLanguage("json", json);
+SyntaxHighlighter.registerLanguage("jsx", jsx);
 
 const PostBody = ({ children }: { children: string }) => {
   return (
