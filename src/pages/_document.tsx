@@ -31,11 +31,6 @@ class MyDocument extends Document {
 
           {/* SEO */}
           <meta name="keywords" content="Cuzz, cuzzlog, Programming, FrontEnd" />
-          <meta name="application-name" content="cuzzlog" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-capable" content="yes"></meta>
-          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <meta name="msapplication-tap-highlight" content="no"></meta>
         </Head>
         <body>
           <Main />

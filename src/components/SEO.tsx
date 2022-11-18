@@ -45,6 +45,21 @@ export const PageSeo = ({ title, description, url }: { title: string; descriptio
   );
 };
 
+export const IntroLD = () => {
+  return (
+    <ArticleJsonLd
+      authorName={"Cuzz"}
+      datePublished={"2022-09-30"}
+      description={"개발자 Cuzz의 개발 일지 겸 개발 블로그"}
+      publisherName={"Cuzz"}
+      title={"Cuzz's Log"}
+      images={[]}
+      url=""
+      publisherLogo={`/image/common/MyLogo.png`}
+    />
+  );
+};
+
 export const BlogSeo = ({
   title,
   summary,

@@ -6,6 +6,7 @@ import Categorys from "src/components/Index/Categorys";
 import Head from "next/head";
 import { Category, getCategorys, getPosts, PostElem } from "inbuild/getPostInfo";
 import PageNavigation from "src/components/Index/PageNavigation";
+import { IntroLD } from "src/components/SEO";
 
 interface HomePorps {
   posts: Pick<PostElem, "postInfo" | "id">[];
@@ -19,6 +20,7 @@ const Home: NextPage<HomePorps> = ({ posts, categorys, maxPage }) => {
       <Head>
         <title>Cuzz&apos;s Log</title>
       </Head>
+      <IntroLD></IntroLD>
       <IntroHeader></IntroHeader>
       <Categorys categorys={categorys} nowCategory="all"></Categorys>
       <section className={cls("mt-2 border-y border-t-stone-400 border-b-stone-600 divide-y-[1px] divide-stone-600")}>
