@@ -300,6 +300,13 @@ MDN에서 소개하는 static Method는 총 여섯 개가 있다. 하나하나 �
 
 > 저 같은 경우에 allSettled 이외에는 거의 써본 경험이 없습니다. 보통 Promise들을 배열로 관리할 때에는 해당 Promise들을 다 관리해야 하는 경우가 많아서 그런 듯 싶습니다. resolve와 reject는 가끔 간단한 Promise 만들 때 씁니다.
 
+#### 12/13 추가 내용
+
+* new Promise의 콜백과 then의 콜백은 굉장히 차이가 많다. 이 둘은 에러가 터졌을 때 catch 체인이 에러를 잡아준다는 점 말고는 닮은 구석이 없다. 
+  (Ep) new Promise 콜백의 return은 Promise에 영향을 미치지 않음 vs then 콜백의 return은 곧 resolve임)
+* new Promise 콜백은 비동기 처리 이후 then과 연결시켜주기 위한 resolve를 제공한다. then은 단지 자신이 연결한 Promise의 후처리를 담당할 뿐이다. then에서도 비동기 로직을 만난다면 그 안에서 new Promise를 이용해야 한다. (다행히 Promise를 리턴하면 then이 원래 리턴해야 했던 Promise( fulfilled 된 거의 동기 로직 )가 대체된다. )
+* 생각해보면 당연하다. new Promise의 매개 변수는 비동기를 가정해 다른 콜스택에서도 Promise를 조작할 수 있도록 resolve와 reject를 준 반면 then은 단순히 결과값만 주어 내부에서 새로운 new Promise 구문을 쓰지 않는 한 비동기 로직을 처리할 수 없게 된다. 
+
 
 
 
